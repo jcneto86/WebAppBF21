@@ -3317,6 +3317,10 @@ input[type=submit].btn-block {
     display: none
 }
 
+.dropdown-menu {
+    display: block
+}
+
 .collapsing {
     position: relative;
     height: 0;

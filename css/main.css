@@ -13,17 +13,22 @@ h6 {
     border-color: #B5842D
 }
 
+.search-container {
+    right: 0px;
+}
+
 .space-row-projet {
     margin-top: 15px;
 }
 
 .container-projet {
     margin: auto;
-    margin-top: 78px;
     width: 100%;
     max-width: 800px;
 }
-
+.margin-top-projet{
+    margin-top: 78px;
+}
 .card-element {
     background-color: #f1f1f1;
     width: 100%;
@@ -32,6 +37,14 @@ h6 {
     margin: 4px;
     padding: 4px;
     border-radius: 3px;
+}
+
+.nav-link {
+    white-space: nowrap;
+}
+
+.nav-link i {
+    margin-right: 4px;
 }
 
 .box-shadow-android {
@@ -78,6 +91,29 @@ h6 {
 .nav-item a {
     margin-right: 12px;
 }
+
+@media (max-width:1199px) {
+    .nav-link span {
+        display: none;
+    }
+}
+
+@media (max-width:991px) {
+    .nav-link span {
+        display: block;
+    }
+    .container {
+        text-align: center;
+    }
+}
+
+
+
+
+
+
+
+
 
 
 
