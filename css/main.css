@@ -291,6 +291,9 @@ p span {
     .nav-link span {
         display: block;
     }
+    .card-element {
+        max-width: 100%;
+    }
 
     .container {
         text-align: center;
@@ -312,7 +315,7 @@ p span {
 
 }
 
-/*// Large devices (desktops, 992px and up)*/
+/*// Large devices (desktops, 1199px and up)*/
 @media (max-width: 1199px) {
     .nav-link span {
         display: none;

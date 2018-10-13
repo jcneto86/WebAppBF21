@@ -1,9 +1,20 @@
-function loand() {
-    let btnEditer = document.getElementsByClassName("fa-pen");
-    let searchFild = document.getElementById("searchFild");
-    for (let i = 0; i < btnEditer.length; i++) {
-        btnEditer[i].addEventListener("click", function d() { ouvrirEditForm(" "); }, false);
-    }
-    searchFild.addEventListener("change", function searchFild() { console.log("Wow"); })
 
+function loadPage() {
+    let searchFild = document.getElementById("searchFild");
+    let bnteffacerClient = document.getElementById("bnteffacerClient");
+    searchFild.addEventListener("change", function () {
+        console.log("Wow");
+    });
+    bnteffacerClient.addEventListener("click", function () {
+        ouvrirEditForm(window.idClientEffacer);
+    })
+    loadClients();
 }
+
+function loadClients() {
+    getAllClients(listClient);
+}
+
+(function () {
+    loadPage();
+})();
