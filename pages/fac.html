@@ -71,14 +71,14 @@
     </div>
 </div>
 
-<button class="btn button-float-projet button-float" data-toggle="modal" data-target="#ajouterFAq">
+<button class="btn button-float-projet button-float" data-toggle="modal" data-target="#ajouterFAC">
     <i class="fas fa-user-plus"></i>
 </button>
 
 <!-- Forms -->
 
 <!-- Modal -->
-<div class="modal fade" id="editFAC" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="editFAC" tabindex="-1" role="dialog" aria-labelledby="editFACModalCenterTitle"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -90,90 +90,13 @@
             </div>
             <div class="modal-body">
                 <form>
-                    <input type="hidden" value="" id="inputajouterIdClient">
+                    <input type="hidden" value="" id="inputEditFACIdFAC">
                     <div class="form-row">
-                        <div class="form-group col-md">
-                            <label for="inputaEditCleintNon">Nom</label>
-                            <input type="text" class="form-control" id="inputaEditCleintNon" placeholder="Nom">
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputaEditCleintPreNom">Pré-non</label>
-                            <input type="text" class="form-control" id="inputaEditCleintPreNom" placeholder="Pré-non">
-                        </div>
+                        <label for="inputaEditFACQuestion">Question</label>
+                        <input type="text" class="form-control" id="inputaEditFACQuestion" placeholder="Question">
+                        <label for="inputEditFACReponce">Réponce</label>
+                        <textarea class="form-control" id="inputEditFACReponce" rows="3"></textarea>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group col-md">
-                            <label for="inputaEditCourrier">Courrier électronique</label>
-                            <input type="text" class="form-control" id="inputaEditCourrier"
-                                   placeholder="Courrier électronique">
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputaEditCleintTelephone">Telephone</label>
-                            <input type="text" class="form-control" id="inputaEditCleintTelephone"
-                                   placeholder="Telephone">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md">
-                            <label for="inputaEditAge">L'Age</label>
-                            <input type="text" class="form-control" id="inputaEditAge" placeholder="Age">
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputaEditGenre">Le Genre</label>
-                            <select id="inputaEditGenre" class="form-control">
-                                <option selected>Slecioner...</option>
-                                <option>Un homme</option>
-                                <option>Une femme</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputaEditHauteur">L'hauteur</label>
-                            <input type="text" class="form-control" id="inputaEditHauteur" placeholder="L'hauteur">
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputaEditPoids">Le poids</label>
-                            <input type="text" class="form-control" id="inputaEditPoids" placeholder="Le poids">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md">
-                            <label for="inputaEditGoal">Goal</label>
-                            <select id="inputaEditGoal" class="form-control">
-                                <option selected>Slecioner...</option>
-                                <option>Un homme</option>
-                                <option>Une femme</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputaEditNvActivite">Niveau d'activité</label>
-                            <select id="inputaEditNvActivite" class="form-control">
-                                <option selected>Slecioner...</option>
-                                <option>Un homme</option>
-                                <option>Une femme</option>
-                                <option>Une femme</option>
-                                <option>Une femme</option>
-                                <option>Une femme</option>
-                            </select>
-                        </div>
-                    </div>
-                    <!--<div class="form-row">-->
-                    <!--<div class="form-group col-md">-->
-                    <!--<label for="inputaEditBMR">BMR</label>-->
-                    <!--<input type="text" class="form-control" id="inputaEditBMR" placeholder="BMR" disabled>-->
-                    <!--</div>-->
-                    <!--<div class="form-group col-md">-->
-                    <!--<label for="inputaEditTDCE">TDCE</label>-->
-                    <!--<input type="text" class="form-control" id="inputaEditTDCE" placeholder="TDCE" disabled>-->
-                    <!--</div>-->
-                    <!--<div class="form-group col-md">-->
-                    <!--<label for="inputaEditTax">Tax</label>-->
-                    <!--<input type="text" class="form-control" id="inputaEditTax" placeholder="Tax" disabled>-->
-                    <!--</div>-->
-                    <!--<div class="form-group col-md">-->
-                    <!--<label for="inputaEditDescription">Description</label>-->
-                    <!--<input type="text" class="form-control" id="inputaEditDescription" placeholder="Description" disabled>-->
-                    <!--</div>-->
-                    <!--</div>-->
                 </form>
             </div>
             <div class="modal-footer">
@@ -184,18 +107,18 @@
     </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="effacerClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="effacerFAC" tabindex="-1" role="dialog" aria-labelledby="effacerFACModalCenterTitle"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="effacerClientTitle">Supprimer un Client</h5>
+                <h5 class="modal-title" id="effacerFACTitle">Supprimer un Client</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Vous voulez vraiment supprimer le client ?
+                Vous voulez vraiment supprimer cette question ?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
@@ -207,102 +130,24 @@
     </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="ajouterFCA" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="ajouterFAC" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="ajouterCleintTitle">Ajouter Client</h5>
+                <h5 class="modal-title" id="ajouterFACTitle">Ajouter FAC</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <form>
-                    <input type="hidden" value="" id="inputajouterIdClient">
+                    <input type="hidden" value="" id="inputAjouterFACIdFAC">
                     <div class="form-row">
-                        <div class="form-group col-md">
-                            <label for="inputajouterCleintNon">Nom</label>
-                            <input type="text" class="form-control" id="inputajouterCleintNon" placeholder="Nom">
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputajouterCleintPreNom">Pré-non</label>
-                            <input type="text" class="form-control" id="inputajouterCleintPreNom" placeholder="Pré-non">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md">
-                            <label for="inputAddress2">Courrier électronique</label>
-                            <input type="text" class="form-control" id="inputAddress2"
-                                   placeholder="Courrier électronique">
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputajouterCleintTelephone">Telephone</label>
-                            <input type="text" class="form-control" id="inputajouterCleintTelephone"
-                                   placeholder="Telephone">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md">
-                            <label for="inputajouterAge">L'Age</label>
-                            <input type="text" class="form-control" id="inputajouterAge" placeholder="Age">
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputajouterGenre">Le Genre</label>
-                            <select id="inputajouterGenre" class="form-control">
-                                <option selected>Slecioner...</option>
-                                <option>Un homme</option>
-                                <option>Une femme</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputajouterHauteur">L'hauteur</label>
-                            <input type="text" class="form-control" id="inputajouterHauteur" placeholder="L'hauteur">
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputajouterPoids">Le poids</label>
-                            <input type="text" class="form-control" id="inputajouterPoids" placeholder="Le poids">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md">
-                            <label for="inputajouterGoal">Goal</label>
-                            <select id="inputajouterGoal" class="form-control">
-                                <option selected>Slecioner...</option>
-                                <option>Un homme</option>
-                                <option>Une femme</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputajouterNvActivite">Niveau d'activité</label>
-                            <select id="inputajouterNvActivite" class="form-control">
-                                <option selected>Slecioner...</option>
-                                <option>Un homme</option>
-                                <option>Une femme</option>
-                                <option>Une femme</option>
-                                <option>Une femme</option>
-                                <option>Une femme</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md">
-                            <label for="inputajouterBMR">BMR</label>
-                            <input type="text" class="form-control" id="inputajouterBMR" placeholder="BMR" disabled>
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputajouterTDCE">TDCE</label>
-                            <input type="text" class="form-control" id="inputajouterTDCE" placeholder="TDCE" disabled>
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputajouterTax">Tax</label>
-                            <input type="text" class="form-control" id="inputajouterTax" placeholder="Tax" disabled>
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputajouterDescription">Description</label>
-                            <input type="text" class="form-control" id="inputajouterDescription"
-                                   placeholder="Description" disabled>
-                        </div>
+                            <label for="inputAjouterFACQuestion">Question</label>
+                            <input type="text" class="form-control" id="inputAjouterFACQuestion" placeholder="Question">
+                            <label for="inputAjouterFACReponce">Réponce</label>
+                            <textarea class="form-control" id="inputAjouterFACReponce" rows="3"></textarea>
                     </div>
                 </form>
             </div>
