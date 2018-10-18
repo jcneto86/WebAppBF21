@@ -1,4 +1,5 @@
 
+
 function loadPage() {
     let searchFild = document.getElementById("searchFild");
     let bnteffacerClient = document.getElementById("bnteffacerClient");
@@ -12,7 +13,7 @@ function loadPage() {
 }
 
 function loadClients() {
-    getAllClients(listClient);
+    getAllClients(listerClient);
 }
 
 (function () {

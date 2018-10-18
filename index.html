@@ -129,18 +129,16 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="inputEmail1">Adresse courriele</label>
-                        <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Entrer l'adresse courriele">
+                        <label for="inputNomUtilisateur">Nom d'utilisateur</label>
+                        <input type="text" class="form-control" id="inputNomUtilisateur" placeholder="Entrer le nom d'utilisateur">
                     </div>
                     <div class="form-group">
-                        <label for="inputPassword1">Mot de passe</label>
-                        <input type="password" class="form-control" id="inputPassword1" placeholder="Entrer le mot de passe">
+                        <label for="inputMotDePass">Mot de passe</label>
+                        <input type="password" class="form-control" id="inputMotDePass" placeholder="Entrer le mot de passe">
+                        <input type="checkbox" checked="checked" name="remember">   Se souvenir de moi
                     </div>
-                    <div class="form-group form-check">
-                            <input type="checkbox" checked="checked" name="remember"> Remember me
-                    </div>
-                    <button type="submit" class="btn btn-danger float-left">annuler</button>
-                    <button type="submit" class="btn btn-success float-right">Submit</button>
+                    <button type="submit" class="btn btn-danger float-left">Annuler</button>
+                    <button id="btnLogin" type="submit" class="btn btn-success float-right">Ouverture une session</button>
                 </form>
             </div>
         </div>
@@ -152,7 +150,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header bg-projet-primary">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Se connecter</h5>
+                <h5 class="modal-title" id="exampleModalCenterTitle">Contacter</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -160,15 +158,16 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Adresse courriele</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrer l'adresse courriele">
+                        <label for="contacterEmail">Adresse courriele</label>
+                        <input type="email" class="form-control" id="contacterEmail" aria-describedby="emailHelp" placeholder="Entrer l'adresse courriele">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Mot de passe</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Entrer le mot de passe">
+                        <label for="contacterNom">Nom complet</label>
+                        <input type="password" class="form-control" id="contacterNom" placeholder="Entrer le mot de passe">
                     </div>
-                    <div class="form-group form-check">
-                        <input type="checkbox" checked="checked" name="remember"> Remember me
+                    <div class="form-group">
+                        <label for="contacterMessage">Ecrivez votre message</label>
+                        <textarea class="form-control" id="contacterMessage" rows="3"></textarea>
                     </div>
                     <button type="submit" class="btn btn-danger float-left">annuler</button>
                     <button type="submit" class="btn btn-success float-right">Submit</button>
@@ -189,7 +188,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-<script src="js/main.js"></script>
+<script src="js/page_accueil.js"></script>
 </body>
 
 </html>

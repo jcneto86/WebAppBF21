@@ -1,178 +1,25 @@
 let baseURL = "http://35.183.168.181";
-
-let serverReturn = {
-    "httpStatus": 3040,
-    "meta": [
-        {
-            "idClient": 1,
-            "name": "Henrique Henrique Henrique Henrique 1",
-            "age": 25,
-            "gender": "M",
-            "email": "henrique@bf21.com",
-            "phoneNumber": "111111",
-            "height": 170,
-            "weight": 75,
-            "bodyFatPercentage": 45,
-            "bmr": 75,
-            "tdce": 75,
-            "clientGoal": {
-                "idClientGoal": 1,
-                "goal": "Lose weight"
-            },
-            "activityLevel": {
-                "idDailyActivityLevel": 1,
-                "description": "Very Light",
-                "tax": 1.3
-            },
-            "proteinRequirement": {
-                "idProteinRequirement": 1,
-                "description": "Sedentary Adult (RDA)",
-                "tax": 0.4
-            },
-            "creationDate": "02/10/2018 07:48:56"
-        },
-        {
-            "idClient": 2,
-            "name": "Henrique 22222",
-            "age": 25,
-            "gender": "M",
-            "email": "henrique@bf21.com",
-            "phoneNumber": "111111",
-            "height": 170,
-            "weight": 75,
-            "bodyFatPercentage": 45,
-            "bmr": 75,
-            "tdce": 75,
-            "clientGoal": {
-                "idClientGoal": 1,
-                "goal": "Lose weight"
-            },
-            "activityLevel": {
-                "idDailyActivityLevel": 1,
-                "description": "Very Light",
-                "tax": 1.3
-            },
-            "proteinRequirement": {
-                "idProteinRequirement": 1,
-                "description": "Sedentary Adult (RDA)",
-                "tax": 0.4
-            },
-            "creationDate": "02/10/2018 07:48:56"
-        },
-        {
-            "idClient": 3,
-            "name": "Henrique 3",
-            "age": 25,
-            "gender": "M",
-            "email": "henrique@bf21.com",
-            "phoneNumber": "111111",
-            "height": 170,
-            "weight": 75,
-            "bodyFatPercentage": 45,
-            "bmr": 75,
-            "tdce": 75,
-            "clientGoal": {
-                "idClientGoal": 1,
-                "goal": "Lose weight"
-            },
-            "activityLevel": {
-                "idDailyActivityLevel": 1,
-                "description": "Very Light",
-                "tax": 1.3
-            },
-            "proteinRequirement": {
-                "idProteinRequirement": 1,
-                "description": "Sedentary Adult (RDA)",
-                "tax": 0.4
-            },
-            "creationDate": "02/10/2018 07:48:56"
-        },
-        {
-            "idClient": 4,
-            "name": "Henrique 1",
-            "age": 25,
-            "gender": "M",
-            "email": "henrique@bf21.com",
-            "phoneNumber": "111111",
-            "height": 170,
-            "weight": 75,
-            "bodyFatPercentage": 45,
-            "bmr": 75,
-            "tdce": 75,
-            "clientGoal": {
-                "idClientGoal": 1,
-                "goal": "Lose weight"
-            },
-            "activityLevel": {
-                "idDailyActivityLevel": 1,
-                "description": "Very Light",
-                "tax": 1.3
-            },
-            "proteinRequirement": {
-                "idProteinRequirement": 1,
-                "description": "Sedentary Adult (RDA)",
-                "tax": 0.4
-            },
-            "creationDate": "02/10/2018 07:48:56"
-        },
-        {
-            "idClient": 5,
-            "name": "Henrique 1",
-            "age": 25,
-            "gender": "M",
-            "email": "henrique@bf21.com",
-            "phoneNumber": "111111",
-            "height": 170,
-            "weight": 75,
-            "bodyFatPercentage": 45,
-            "bmr": 75,
-            "tdce": 75,
-            "clientGoal": {
-                "idClientGoal": 1,
-                "goal": "Lose weight"
-            },
-            "activityLevel": {
-                "idDailyActivityLevel": 1,
-                "description": "Very Light",
-                "tax": 1.3
-            },
-            "proteinRequirement": {
-                "idProteinRequirement": 1,
-                "description": "Sedentary Adult (RDA)",
-                "tax": 0.4
-            },
-            "creationDate": "02/10/2018 07:48:56"
-        },
-        {
-            "idClient": 6,
-            "name": "Henrique 1",
-            "age": 25,
-            "gender": "M",
-            "email": "henrique@bf21.com",
-            "phoneNumber": "111111",
-            "height": 170,
-            "weight": 75,
-            "bodyFatPercentage": 45,
-            "bmr": 75,
-            "tdce": 75,
-            "clientGoal": {
-                "idClientGoal": 1,
-                "goal": "Lose weight"
-            },
-            "activityLevel": {
-                "idDailyActivityLevel": 1,
-                "description": "Very Light",
-                "tax": 1.3
-            },
-            "proteinRequirement": {
-                "idProteinRequirement": 1,
-                "description": "Sedentary Adult (RDA)",
-                "tax": 0.4
-            },
-            "creationDate": "02/10/2018 07:48:56"
-        }
-    ],
-    "message": "Client list found successfully."
+let listClient;
+let clientSelecioner = {
+    "name": "",
+    "age": "",
+    "gender": "",
+    "email": "",
+    "phoneNumber": "",
+    "height": "",
+    "weight": "",
+    "bodyFatPercentage": "",
+    "bmr": "",
+    "tdce": "",
+    "clientGoal": {
+        "idClientGoal": ""
+    },
+    "activityLevel": {
+        "idDailyActivityLevel": ""
+    },
+    "proteinRequirement": {
+        "idProteinRequirement": ""
+    }
 };
 
 function getAllClients(callback) {
@@ -181,9 +28,8 @@ function getAllClients(callback) {
     xhr.withCredentials = true;
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
-            console.log(this.responseText + "\n");
-            let donne = JSON.parse(this.responseText);
-            callback(serverReturn);
+            listClient = JSON.parse(this.responseText);
+            callback(listClient);
         }
     });
     xhr.open("GET", baseURL + "/client/list");
@@ -192,16 +38,29 @@ function getAllClients(callback) {
     xhr.send(data);
 }
 
-function getClientById(id) {
+function getClientById(id, callback) {
+    var data = null;
 
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+            console.log("WoWoWoWo\n");
+            console.log(this.responseText + "\n");
+            let donne  = JSON.parse(this.responseText);
+            callback(donne);
+        }
+    });
+
+    xhr.open("GET", baseURL + "/client?idClient=" + id);
+    xhr.setRequestHeader("cache-control", "no-cache");
+    xhr.setRequestHeader("Postman-Token", "e485a582-14b8-4d2b-baaf-246cfbb4d7d4");
+
+    xhr.send(data);
 }
 
 function effacerClientByID(id) {
-    let client = document.getElementById("client-" + id);
-
-}
-
-function getClientsByQuery(id) {
     var data = null;
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
@@ -210,7 +69,27 @@ function getClientsByQuery(id) {
             console.log(this.responseText);
         }
     });
-    xhr.open("GET", baseURL + "/client/list?query=" + id);
+
+    xhr.open("DELETE", baseURL + "/client?idClient=" + id);
+    xhr.setRequestHeader("cache-control", "no-cache");
+    xhr.setRequestHeader("Postman-Token", "1123c3fc-a507-418f-9a07-4508aa6c4ca6");
+
+    xhr.send(data);
+
+}
+
+function getClientsByQuery(query, callback) {
+    var data = null;
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+            console.log(this.responseText);
+            listClient = JSON.parse(this.responseText);
+            callback(listClient);
+        }
+    });
+    xhr.open("GET", baseURL + "/client/list?query=" + query);
     xhr.setRequestHeader("cache-control", "no-cache");
     xhr.setRequestHeader("Postman-Token", "389a3d00-3e88-42a9-87da-4276ec86e11e");
     xhr.send(data);
@@ -254,11 +133,31 @@ function ajouterClient(client) {
     xhr.send(data);
 }
 
-function listClient(data) {
+function editerClient(client) {
+    let data = client;
+    let xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+            console.log(this.responseText);
+        }
+    });
+
+    xhr.open("PUT", baseURL + "/client");
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.setRequestHeader("cache-control", "no-cache");
+    xhr.setRequestHeader("Postman-Token", "37af1a1c-6ee7-4bf0-9ddc-9275f96cc11c");
+
+    xhr.send(data);
+
+}
+
+function listerClient(data) {
     let nbRow = 1;
     let nbCol = 1;
-    let clients = data.meta;
-    let arrayClients = clients;
+    let baseClients = data.meta;
+    let arrayClients = baseClients;
     let conteiner = document.getElementById("listClient");
     conteiner.innerHTML = "";
     let row = document.createElement("div");
@@ -280,13 +179,14 @@ function listClient(data) {
         let buttonEffacer = document.createElement("button");
         buttonEffacer.className = "btn bg-transparent btn-effacer";
         let buttonEditer = document.createElement("button");
-        buttonEditer.className = "btn bg-transparent";
+        buttonEditer.className = "btn bg-transparent btn-editer";
         let iconPen = document.createElement("i");
         iconPen.className = "fas fa-pen";
         let iconTrash = document.createElement("i");
         iconTrash.className = "fas fa-trash-alt";
         buttonEditer.setAttribute("data-toggle", "modal");
         buttonEditer.setAttribute("data-target", "#editClient");
+        buttonEditer.setAttribute("data-value", arrayClients[i].idClient);
         buttonEffacer.setAttribute("data-toggle", "modal");
         buttonEffacer.setAttribute("data-target", "#effacerClient");
         buttonEffacer.setAttribute("data-value", arrayClients[i].idClient);
@@ -310,21 +210,100 @@ function listClient(data) {
             row.id = nbRow;
         }
     }
-    let btnEditer = document.getElementsByClassName("btn-effacer");
+    let btnEffacer = document.getElementsByClassName("btn-effacer");
+    for (let i = 0; i < btnEffacer.length; i++) {
+        btnEffacer[i].addEventListener("click", function (e) {
+            let id = e.currentTarget.getAttribute("data-value");
+            // $(this)
+            window.idClientEffacer = id;
+            effacerClient(window.idClientEffacer);
+            e.preventDefault();
+        });
+    }
+    let btnEditer = document.getElementsByClassName("btn-editer");
     for (let i = 0; i < btnEditer.length; i++) {
         btnEditer[i].addEventListener("click", function (e) {
             let id = e.currentTarget.getAttribute("data-value");
             // $(this)
-            window.idClientEffacer = id;
-            alert(window.idClientEffacer);
+            window.idClientEditer = id;
+            window.setTimeout(function () {ouvrirEditForm(window.idClientEditer)}, 300);
             e.preventDefault();
         });
     }
 }
 
-function ouvrirEditForm(data) {
-    alert(data);
+function registrerClientSelecioner(data) {
+    clientSelecioner = data.meta;
 }
+
+function effacerClient(id) {
+alert(id);
+}
+
+function ouvrirEditForm(id) {
+    getClientById(id, registrerClientSelecioner);
+    let inputEditCleintNon = document.getElementById("inputEditCleintNon");
+    let inputEditCourrier = document.getElementById("inputEditCourrier");
+    let inputEditCleintTelephone = document.getElementById("inputEditCleintTelephone");
+    let inputEditAge = document.getElementById("inputEditAge");
+    let inputEditGenre = document.getElementById("inputEditGenre");
+    let inputEditHauteur = document.getElementById("inputEditHauteur");
+    let inputEditPoids = document.getElementById("inputEditPoids");
+    let inputEditObjectif = document.getElementById("inputEditObjectif");
+    let inputEditNvActivite = document.getElementById("inputEditNvActivite");
+    let inputEditProteinRequirement = document.getElementById("inputEditProteinRequirement");
+    let inputEditBMR = document.getElementById("inputEditBMR");
+    let inputEditTDCE = document.getElementById("inputEditTDCE");
+    inputEditCleintNon.value = clientSelecioner.name;
+    inputEditCourrier.value = clientSelecioner.email;
+    inputEditCleintTelephone.value = clientSelecioner.phoneNumber;
+    inputEditAge.value = clientSelecioner.age;
+    inputEditGenre.selectedIndex = retounSelectSexe(clientSelecioner.gender);
+    inputEditHauteur.value = clientSelecioner.height;
+    inputEditPoids.value = clientSelecioner.weight;
+    inputEditObjectif.selectedIndex = clientSelecioner.clientGoal.idClientGoal;
+    inputEditNvActivite.selectedIndex = clientSelecioner.activityLevel.idDailyActivityLevel;
+    inputEditProteinRequirement.selectedIndex = clientSelecioner.proteinRequirement.idProteinRequirement;
+    inputEditBMR.value = 3434;
+    inputEditTDCE.value = 3434;
+
+}
+
+function retounSelectSexe(s) {
+        if (s === "F")
+            return 2;
+        else
+            return 1;
+
+}
+
+
+
+function sauvegarderClient(client) {
+
+}
+
+
+
+function loadPage() {
+    let searchFild = document.getElementById("searchFild");
+    let bnteffacerClient = document.getElementById("bnteffacerClient");
+    searchFild.addEventListener("change", function () {
+        console.log("Wow");
+    });
+    bnteffacerClient.addEventListener("click", function () {
+        effacerClient(window.idClientEffacer);
+    })
+    loadClients();
+}
+
+function loadClients() {
+    getAllClients(listerClient);
+}
+
+(function () {
+    loadPage();
+})();
 
 
 
