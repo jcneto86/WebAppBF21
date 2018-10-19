@@ -125,7 +125,7 @@ function ajouterClient(client) {
             console.log(this.responseText);
         }
     });
-    xhr.open("POST", "http://35.183.168.181:80/client");
+    xhr.open("POST", baseURL + "/client");
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.setRequestHeader("cache-control", "no-cache");
     xhr.setRequestHeader("Postman-Token", "0c4f47bd-afaa-45ea-b141-36ef0a7a55c2");
