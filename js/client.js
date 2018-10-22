@@ -1,24 +1,25 @@
 let baseURL = "http://35.183.168.181";
 let listClient;
 let clientSelecioner = {
-    "name": "",
-    "age": "",
-    "gender": "",
+    "idClient": null,
+    "name": null,
+    "age": null,
+    "gender": null,
     "email": "",
-    "phoneNumber": "",
-    "height": "",
-    "weight": "",
-    "bodyFatPercentage": "",
-    "bmr": "",
-    "tdce": "",
+    "phoneNumber": null,
+    "height": null,
+    "weight": null,
+    "bodyFatPercentage": null,
+    "bmr": null,
+    "tdce": null,
     "clientGoal": {
-        "idClientGoal": ""
+        "idClientGoal": null
     },
     "activityLevel": {
-        "idDailyActivityLevel": ""
+        "idDailyActivityLevel": null
     },
     "proteinRequirement": {
-        "idProteinRequirement": ""
+        "idProteinRequirement": null
     }
 };
 
@@ -232,8 +233,29 @@ function listerClient(data) {
     }
 }
 
-function registrerClientSelecioner(data) {
-    clientSelecioner = data.meta;
+function registrerClientSelecioner(client) {
+    clientSelecioner = {
+        "idClient": client.idClient,
+        "name": client.name,
+        "age": client.age,
+        "gender": client.gender,
+        "email": client.email,
+        "phoneNumber": client.phoneNumber,
+        "height": client.height,
+        "weight": client.weight,
+        "bodyFatPercentage": client.bodyFatPercentage,
+        "bmr": client.bmr,
+        "tdce": client.tdce,
+        "clientGoal": {
+            "idClientGoal": client.clientGoal.idClientGoal
+        },
+        "activityLevel": {
+            "idDailyActivityLevel": client.activityLevel.idDailyActivityLevel
+        },
+        "proteinRequirement": {
+            "idProteinRequirement": client.proteinRequirement.idProteinRequirement
+        }
+    };
 }
 
 function effacerClient(id) {
@@ -241,7 +263,14 @@ alert(id);
 }
 
 function ouvrirEditForm(id) {
-    getClientById(id, registrerClientSelecioner);
+    // alert(JSON.stringify(id));
+    for (let i = 0; i < listClient.meta.length; i++) {
+        if (listClient.meta[i].idClient == id)
+            registrerClientSelecioner(listClient.meta[i]);
+    }
+// alert(JSON.stringify(clientSelecioner));
+//     alert(JSON.stringify(listClient));
+    // getClientById(id, registrerClientSelecioner);
     let inputEditCleintNon = document.getElementById("inputEditCleintNon");
     let inputEditCourrier = document.getElementById("inputEditCourrier");
     let inputEditCleintTelephone = document.getElementById("inputEditCleintTelephone");
