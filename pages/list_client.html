@@ -87,7 +87,7 @@
                     <div class="form-row">
                         <div class="form-group col-md">
                             <label for="inputEditCourrier">Courrier électronique</label>
-                            <input type="text" class="form-control" id="inputEditCourrier" placeholder="Courrier électronique">
+                            <input type="email" class="form-control" id="inputEditCourrier" placeholder="Courrier électronique">
                         </div>
                         <div class="form-group col-md">
                             <label for="inputEditCleintTelephone">Telephone</label>
@@ -97,26 +97,30 @@
                     <div class="form-row">
                         <div class="form-group col-md">
                             <label for="inputEditAge">L'Age</label>
-                            <input type="text" class="form-control" id="inputEditAge" placeholder="Age">
+                            <input type="number" class="form-control" id="inputEditAge" placeholder="Age">
                         </div>
                         <div class="form-group col-md">
                             <label for="inputEditGenre">Le Genre</label>
                             <select id="inputEditGenre" class="form-control">
                                 <option selected>Slecioner...</option>
-                                <option>Un homme</option>
-                                <option>Une femme</option>
+                                <option value="M">Un homme</option>
+                                <option value="F">Une femme</option>
                             </select>
                         </div>
                         <div class="form-group col-md">
                             <label for="inputEditHauteur">L'hauteur (cm)</label>
-                            <input type="text" class="form-control" id="inputEditHauteur" placeholder="L'hauteur">
+                            <input type="number" class="form-control" id="inputEditHauteur" placeholder="L'hauteur">
                         </div>
                         <div class="form-group col-md">
                             <label for="inputEditPoids">Le poids (Kg)</label>
-                            <input type="text" class="form-control" id="inputEditPoids" placeholder="Le poids">
+                            <input type="number" class="form-control" id="inputEditPoids" placeholder="Le poids">
                         </div>
                     </div>
                     <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputEditBodyFatPercentage">Pourcentage de graisse</label>
+                            <input type="number" class="form-control" id="inputEditBodyFatPercentage" placeholder="Pourcentage de graisse">
+                        </div>
                         <div class="form-group col-md">
                             <label for="inputEditObjectif">Objectif</label>
                             <select id="inputEditObjectif" class="form-control">
@@ -152,11 +156,11 @@
                     <div class="form-row">
                         <div class="form-group col-md">
                             <label for="inputEditBMR">BMR</label>
-                            <input type="text" class="form-control" id="inputEditBMR" placeholder="BMR" disabled>
+                            <input type="number" class="form-control" id="inputEditBMR" placeholder="BMR" disabled>
                         </div>
                         <div class="form-group col-md">
                             <label for="inputEditTDCE">TDCE</label>
-                            <input type="text" class="form-control" id="inputEditTDCE" placeholder="TDCE" disabled>
+                            <input type="number" class="form-control" id="inputEditTDCE" placeholder="TDCE" disabled>
                         </div>
                     </div>
                 </form>
@@ -215,7 +219,7 @@
                     <div class="form-row">
                         <div class="form-group col-md">
                             <label for="inputAjouterCourrier">Courrier électronique</label>
-                            <input type="text" class="form-control" id="inputAjouterCourrier" placeholder="Courrier électronique">
+                            <input type="email" class="form-control" id="inputAjouterCourrier" placeholder="Courrier électronique">
                         </div>
                         <div class="form-group col-md">
                             <label for="inputAjouterCleintTelephone">Telephone</label>
@@ -225,30 +229,34 @@
                     <div class="form-row">
                         <div class="form-group col-md">
                             <label for="inputAjouterAge">L'Age</label>
-                            <input type="text" class="form-control" id="inputAjouterAge" placeholder="Age">
+                            <input type="number" class="form-control" id="inputAjouterAge" placeholder="Age">
                         </div>
                         <div class="form-group col-md">
                             <label for="inputAjouterGenre">Le Genre</label>
                             <select id="inputAjouterGenre" class="form-control">
-                                <option selected>Slecioner...</option>
-                                <option>Un homme</option>
-                                <option>Une femme</option>
+                                <option value="0" selected>Slecioner...</option>
+                                <option value="M">Un homme</option>
+                                <option value="F">Une femme</option>
                             </select>
                         </div>
                         <div class="form-group col-md">
                             <label for="inputAjouterHauteur">L'hauteur (cm)</label>
-                            <input type="text" class="form-control" id="inputAjouterHauteur" placeholder="L'hauteur">
+                            <input type="number" class="form-control" id="inputAjouterHauteur" placeholder="L'hauteur">
                         </div>
                         <div class="form-group col-md">
                             <label for="inputAjouterPoids">Le poids (Kg)</label>
-                            <input type="text" class="form-control" id="inputAjouterPoids" placeholder="Le poids">
+                            <input type="number" class="form-control" id="inputAjouterPoids" placeholder="Le poids">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md">
+                            <label for="inputAjouterBodyFatPercentage">Pourcentage de graisse</label>
+                            <input type="number" class="form-control" id="inputAjouterBodyFatPercentage" placeholder="Pourcentage de graisse">
+                        </div>
+                        <div class="form-group col-md">
                             <label for="inputAjouterObjectif">Objectif</label>
                             <select id="inputAjouterObjectif" class="form-control">
-                                <option selected>Slecioner...</option>
+                                <option value="0" selected>Slecioner...</option>
                                 <option value="1">Lose weight</option>
                                 <option value="2">Keep weight</option>
                                 <option value="3">Gain weight</option>
@@ -257,7 +265,7 @@
                         <div class="form-group col-md">
                             <label for="inputAjouterNvActivite">Niveau d'activité</label>
                             <select id="inputAjouterNvActivite" class="form-control">
-                                <option selected>Slecioner...</option>
+                                <option value="0" selected>Slecioner...</option>
                                 <option value="1">Very Light</option>
                                 <option value="2">Light</option>
                                 <option value="3">Moderate</option>
@@ -267,7 +275,7 @@
                         <div class="form-group col-md">
                             <label for="inputAjouterProteinRequirement">Besoins en protéines</label>
                             <select id="inputAjouterProteinRequirement" class="form-control">
-                                <option selected>Slecioner...</option>
+                                <option value="0" selected>Slecioner...</option>
                                 <option value="1">Sedentary Adult (RDA)</option>
                                 <option value="2">Adult Recreational Exerciser</option>
                                 <option value="3">Adult Competitive Athlete</option>
@@ -280,22 +288,23 @@
                     <div class="form-row">
                         <div class="form-group col-md">
                             <label for="inputAjouterBMR">BMR</label>
-                            <input type="text" class="form-control" id="inputAjouterBMR" placeholder="BMR" disabled>
+                            <input type="number" class="form-control" id="inputAjouterBMR" placeholder="BMR" disabled>
                         </div>
                         <div class="form-group col-md">
                             <label for="inputAjouterTDCE">TDCE</label>
-                            <input type="text" class="form-control" id="inputAjouterTDCE" placeholder="TDCE" disabled>
+                            <input type="number" class="form-control" id="inputAjouterTDCE" placeholder="TDCE" disabled>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
-                <button type="button" class="btn btn-success"><i class="fas fa-plus"></i> Ajouter</button>
+                <button id="btnAjouterClient" type="button" class="btn btn-success"><i class="fas fa-plus"></i> Ajouter</button>
             </div>
         </div>
     </div>
 </div>
+
 
 <!--Fin forms -->
 
@@ -306,6 +315,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+<script src="https://github.com/makeusabrew/bootbox/releases/download/v4.4.0/bootbox.min.js"></script>
 
 <script src="../js/client.js"></script>
 

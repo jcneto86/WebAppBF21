@@ -54,6 +54,10 @@ h6 {
     margin-top: 15px;
 }
 
+.max-card-size {
+    max-width: 226px;
+}
+
 .container-projet {
     margin: auto;
     width: 100%;
@@ -92,7 +96,7 @@ p span {
     height: 100%;
     min-height: 80px;
     margin: 4px;
-    padding: 4px;
+    padding: 8px;
     border-radius: 3px;
 }
 
@@ -294,7 +298,9 @@ p span {
     .card-element {
         max-width: 100%;
     }
-
+    .max-card-size {
+        max-width: 100%;
+    }
     .container {
         text-align: center;
     }
@@ -307,6 +313,7 @@ p span {
 
 /*// Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
+
 
 }
 
@@ -327,11 +334,11 @@ p span {
         height: 117px;
         min-width: 220px;
     }
+
 }
 
 /*// Extra large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {
-
 }
 
 

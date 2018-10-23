@@ -1,7 +1,57 @@
 let baseURL = "http://35.183.168.181";
-let listClient;
+const FIXED_NUMBER_STEP1 = 24;
+const MULTIPLY_NUMBER_MAN = 1.0;
+const MULTIPLY_NUMBER_WOMAN = 0.9;
+const FIXED_NUMBER_STEP2_RANGE1 = 1.0;
+const FIXED_NUMBER_STEP2_RANGE2 = 0.95;
+const FIXED_NUMBER_STEP2_RANGE3 = 0.90;
+const FIXED_NUMBER_STEP2_RANGE4 = 0.85;
+let listdailyActivityLevel = [
+    {
+        "idDailyActivityLevel": 1,
+        "description": "Very Light",
+        "tax": 1.3
+    },
+    {
+        "idDailyActivityLevel": 2,
+        "description": "Light",
+        "tax": 1.55
+    },
+    {
+        "idDailyActivityLevel": 3,
+        "description": "Moderate",
+        "tax": 1.65
+    },
+    {
+        "idDailyActivityLevel": 4,
+        "description": "Heavy",
+        "tax": 1.8
+    }
+];
+let listClient = null;
 let clientSelecioner = {
     "idClient": null,
+    "name": null,
+    "age": null,
+    "gender": null,
+    "email": "",
+    "phoneNumber": null,
+    "height": null,
+    "weight": null,
+    "bodyFatPercentage": null,
+    "bmr": null,
+    "tdce": null,
+    "clientGoal": {
+        "idClientGoal": null
+    },
+    "activityLevel": {
+        "idDailyActivityLevel": null
+    },
+    "proteinRequirement": {
+        "idProteinRequirement": null
+    }
+};
+let clientPourAjouter = {
     "name": null,
     "age": null,
     "gender": null,
@@ -39,7 +89,7 @@ function getAllClients(callback) {
     xhr.send(data);
 }
 
-function getClientById(id, callback) {
+function getAlldailyActivityLevel() {
     var data = null;
 
     var xhr = new XMLHttpRequest();
@@ -47,9 +97,29 @@ function getClientById(id, callback) {
 
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
+            let donne = JSON.parse(this.responseText);
+            listdailyActivityLevel = donne.meta;
+        }
+    });
+
+    xhr.open("GET", baseURL + "/client/dailyActivityLevel/list");
+    xhr.setRequestHeader("cache-control", "no-cache");
+    xhr.setRequestHeader("Postman-Token", "c8dd1df9-d0eb-471b-883f-15e092dcb979");
+
+    xhr.send(data);
+}
+
+
+function getClientById(id, callback) {
+    var data = null;
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
             console.log("WoWoWoWo\n");
             console.log(this.responseText + "\n");
-            let donne  = JSON.parse(this.responseText);
+            let donne = JSON.parse(this.responseText);
             callback(donne);
         }
     });
@@ -61,7 +131,7 @@ function getClientById(id, callback) {
     xhr.send(data);
 }
 
-function effacerClientByID(id) {
+function deleteClientByID(id) {
     var data = null;
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
@@ -97,7 +167,7 @@ function getClientsByQuery(query, callback) {
     return data;
 }
 
-function ajouterClient(client) {
+function newClient(client) {
     let data = JSON.stringify({
         "name": client.name,
         "age": client.age,
@@ -123,13 +193,15 @@ function ajouterClient(client) {
     xhr.withCredentials = true;
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
-            console.log(this.responseText);
+            let donne = JSON.parse(this.responseText);
+            if (donne.httpStatus === 200)
+                bootbox.alert(":D");
         }
     });
     xhr.open("POST", baseURL + "/client");
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.setRequestHeader("cache-control", "no-cache");
-    xhr.setRequestHeader("Postman-Token", "0c4f47bd-afaa-45ea-b141-36ef0a7a55c2");
+    xhr.setRequestHeader("Postman-Token", "9aa04ab0-21c3-4040-8064-a2761859dcff");
 
     xhr.send(data);
 }
@@ -157,8 +229,7 @@ function editerClient(client) {
 function listerClient(data) {
     let nbRow = 1;
     let nbCol = 1;
-    let baseClients = data.meta;
-    let arrayClients = baseClients;
+    let arrayClients = data.meta;
     let conteiner = document.getElementById("listClient");
     conteiner.innerHTML = "";
     let row = document.createElement("div");
@@ -167,7 +238,7 @@ function listerClient(data) {
     for (let i = 0; i < arrayClients.length; i++) {
         let col = document.createElement("div");
         let card = document.createElement("div");
-        col.className = "col-sm col-sm-list";
+        col.className = "col-sm col-sm-list max-card-size";
         card.className = "card-element box-shadow-android";
         let input = document.createElement("input");
         input.type = "hidden";
@@ -201,7 +272,7 @@ function listerClient(data) {
         col.append(card);
         row.append(col);
         nbCol++;
-        if (nbCol > 3 || arrayClients.length < 2) {
+        if (nbCol > 3) {
             nbRow++;
             nbCol = 1;
             conteiner.append(row);
@@ -209,6 +280,8 @@ function listerClient(data) {
             row = document.createElement("div");
             row.className = "row row-list space-row-projet";
             row.id = nbRow;
+        } else {
+            conteiner.append(row);
         }
     }
     let btnEffacer = document.getElementsByClassName("btn-effacer");
@@ -217,7 +290,6 @@ function listerClient(data) {
             let id = e.currentTarget.getAttribute("data-value");
             // $(this)
             window.idClientEffacer = id;
-            effacerClient(window.idClientEffacer);
             e.preventDefault();
         });
     }
@@ -227,13 +299,13 @@ function listerClient(data) {
             let id = e.currentTarget.getAttribute("data-value");
             // $(this)
             window.idClientEditer = id;
-            window.setTimeout(function () {ouvrirEditForm(window.idClientEditer)}, 300);
+            ouvrirEditForm(window.idClientEditer);
             e.preventDefault();
         });
     }
 }
 
-function registrerClientSelecioner(client) {
+function creeClientSelecioner(client) {
     clientSelecioner = {
         "idClient": client.idClient,
         "name": client.name,
@@ -258,19 +330,11 @@ function registrerClientSelecioner(client) {
     };
 }
 
-function effacerClient(id) {
-alert(id);
-}
-
 function ouvrirEditForm(id) {
-    // alert(JSON.stringify(id));
     for (let i = 0; i < listClient.meta.length; i++) {
-        if (listClient.meta[i].idClient == id)
-            registrerClientSelecioner(listClient.meta[i]);
+        if (listClient.meta[i].idClient === id)
+            creeClientSelecioner(listClient.meta[i]);
     }
-// alert(JSON.stringify(clientSelecioner));
-//     alert(JSON.stringify(listClient));
-    // getClientById(id, registrerClientSelecioner);
     let inputEditCleintNon = document.getElementById("inputEditCleintNon");
     let inputEditCourrier = document.getElementById("inputEditCourrier");
     let inputEditCleintTelephone = document.getElementById("inputEditCleintTelephone");
@@ -283,46 +347,148 @@ function ouvrirEditForm(id) {
     let inputEditProteinRequirement = document.getElementById("inputEditProteinRequirement");
     let inputEditBMR = document.getElementById("inputEditBMR");
     let inputEditTDCE = document.getElementById("inputEditTDCE");
+    let inputEditBodyFatPercentage = document.getElementById("inputEditBodyFatPercentage");
     inputEditCleintNon.value = clientSelecioner.name;
     inputEditCourrier.value = clientSelecioner.email;
     inputEditCleintTelephone.value = clientSelecioner.phoneNumber;
     inputEditAge.value = clientSelecioner.age;
-    inputEditGenre.selectedIndex = retounSelectSexe(clientSelecioner.gender);
+    inputEditGenre.selectedIndex = clientSelecioner.gender === "M" ? "1" : "2";
+    inputEditBodyFatPercentage.value = clientSelecioner.bodyFatPercentage;
     inputEditHauteur.value = clientSelecioner.height;
     inputEditPoids.value = clientSelecioner.weight;
     inputEditObjectif.selectedIndex = clientSelecioner.clientGoal.idClientGoal;
     inputEditNvActivite.selectedIndex = clientSelecioner.activityLevel.idDailyActivityLevel;
     inputEditProteinRequirement.selectedIndex = clientSelecioner.proteinRequirement.idProteinRequirement;
-    inputEditBMR.value = 3434;
-    inputEditTDCE.value = 3434;
-
-}
-
-function retounSelectSexe(s) {
-        if (s === "F")
-            return 2;
-        else
-            return 1;
-
+    inputEditBMR.value = calBMR(clientSelecioner);
+    inputEditTDCE.value = calTDCE(clientSelecioner);
 }
 
 
+function sauvegarderClient() {
+    let inputEditCleintNon = document.getElementById("inputEditCleintNon");
+    let inputEditCourrier = document.getElementById("inputEditCourrier");
+    let inputEditCleintTelephone = document.getElementById("inputEditCleintTelephone");
+    let inputEditAge = document.getElementById("inputEditAge");
+    let inputEditGenre = document.getElementById("inputEditGenre");
+    let inputEditHauteur = document.getElementById("inputEditHauteur");
+    let inputEditPoids = document.getElementById("inputEditPoids");
+    let inputEditObjectif = document.getElementById("inputEditObjectif");
+    let inputEditNvActivite = document.getElementById("inputEditNvActivite");
+    let inputEditProteinRequirement = document.getElementById("inputEditProteinRequirement");
+    let inputEditBodyFatPercentage = document.getElementById("inputEditBodyFatPercentage");
+    clientSelecioner.name = inputEditCleintNon.value;
+    clientSelecioner.age = Number(inputEditAge.value);
+    clientSelecioner.gender = inputEditGenre.value;
+    clientSelecioner.email = inputEditCourrier.value;
+    clientSelecioner.phoneNumber = inputEditCleintTelephone.value;
+    clientSelecioner.height = Number(inputEditHauteur.value);
+    clientSelecioner.weight = Number(inputEditPoids.value);
+    clientSelecioner.bodyFatPercentage = Number(inputEditBodyFatPercentage.value);
+    clientSelecioner.clientGoal.idClientGoal = Number(inputEditObjectif.value);
+    clientSelecioner.activityLevel.idDailyActivityLevel = Number(inputEditNvActivite.value);
+    clientSelecioner.proteinRequirement.idProteinRequirement = Number(inputEditProteinRequirement.value);
+    clientSelecioner.bmr = Number(calBMR(clientSelecioner));
+    clientSelecioner.tdce = Number(calTDCE(clientSelecioner));
 
-function sauvegarderClient(client) {
 
 }
 
+function calBMR(client) {
+    let bmr;
+    let step1;
+
+    if (client.gender === "M") {
+        step1 = MULTIPLY_NUMBER_MAN * client.weight * FIXED_NUMBER_STEP1;
+    } else {
+        step1 = MULTIPLY_NUMBER_WOMAN * client.weight * FIXED_NUMBER_STEP1;
+    }
+
+    if (client.gender === 'M') {
+        if (client.bodyFatPercentage >= 10 && client.bodyFatPercentage <= 14) {
+            bmr = step1 * FIXED_NUMBER_STEP2_RANGE1;
+        } else if (client.bodyFatPercentage > 14 && client.bodyFatPercentage <= 20) {
+            bmr = step1 * FIXED_NUMBER_STEP2_RANGE2;
+        } else if (client.bodyFatPercentage > 20 && client.bodyFatPercentage <= 28) {
+            bmr = step1 * FIXED_NUMBER_STEP2_RANGE3;
+        } else if (client.bodyFatPercentage > 28) {
+            bmr = step1 * FIXED_NUMBER_STEP2_RANGE4;
+        } else {
+            bmr = null;
+        }
+    } else {
+        if (client.bodyFatPercentage >= 14 && client.bodyFatPercentage <= 18) {
+            bmr = step1 * FIXED_NUMBER_STEP2_RANGE1;
+        } else if (client.bodyFatPercentage > 18 && client.bodyFatPercentage <= 28) {
+            bmr = step1 * FIXED_NUMBER_STEP2_RANGE2;
+        } else if (client.bodyFatPercentage > 28 && client.bodyFatPercentage <= 38) {
+            bmr = step1 * FIXED_NUMBER_STEP2_RANGE3;
+        } else if (client.bodyFatPercentage > 38) {
+            bmr = step1 * FIXED_NUMBER_STEP2_RANGE4;
+        } else {
+            bmr = null;
+        }
+    }
+    return bmr.toFixed(2);
+
+}
+
+
+function calTDCE(client) {
+    let idDailyActivityLevel = client.activityLevel.idDailyActivityLevel;
+    let tax = null;
+
+    listdailyActivityLevel.forEach(dailyActivityLevel => {
+        if (dailyActivityLevel.idDailyActivityLevel === idDailyActivityLevel) {
+            tax = dailyActivityLevel.tax;
+        }
+    });
+
+    return (client.bmr * tax).toFixed(2);
+
+}
+
+function ajouterClient() {
+    let inputAjouterCleintNon = document.getElementById("inputAjouterCleintNon");
+    let inputAjouterCourrier = document.getElementById("inputAjouterCourrier");
+    let inputAjouterCleintTelephone = document.getElementById("inputAjouterCleintTelephone");
+    let inputAjouterAge = document.getElementById("inputAjouterAge");
+    let inputAjouterGenre = document.getElementById("inputAjouterGenre");
+    let inputAjouterHauteur = document.getElementById("inputAjouterHauteur");
+    let inputAjouterPoids = document.getElementById("inputAjouterPoids");
+    let inputAjouterObjectif = document.getElementById("inputAjouterObjectif");
+    let inputAjouterNvActivite = document.getElementById("inputAjouterNvActivite");
+    let inputAjouterBodyFatPercentage = document.getElementById("inputAjouterBodyFatPercentage");
+    let inputAjouterProteinRequirement = document.getElementById("inputAjouterProteinRequirement");
+    clientPourAjouter.name = inputAjouterCleintNon.value;
+    clientPourAjouter.age = Number(inputAjouterAge.value);
+    clientPourAjouter.gender = inputAjouterGenre.value;
+    clientPourAjouter.email = inputAjouterCourrier.value;
+    clientPourAjouter.phoneNumber = inputAjouterCleintTelephone.value;
+    clientPourAjouter.height = Number(inputAjouterHauteur.value);
+    clientPourAjouter.weight = Number(inputAjouterPoids.value);
+    clientPourAjouter.bodyFatPercentage = Number(inputAjouterBodyFatPercentage.value);
+    clientPourAjouter.clientGoal.idClientGoal = Number(inputAjouterObjectif.value);
+    clientPourAjouter.activityLevel.idDailyActivityLevel = Number(inputAjouterNvActivite.value);
+    clientPourAjouter.proteinRequirement.idProteinRequirement = Number(inputAjouterProteinRequirement.value);
+    clientPourAjouter.bmr = Number(calBMR(clientPourAjouter));
+    clientPourAjouter.tdce = Number(calTDCE(clientPourAjouter));
+    newClient(clientPourAjouter);
+}
 
 
 function loadPage() {
     let searchFild = document.getElementById("searchFild");
     let bnteffacerClient = document.getElementById("bnteffacerClient");
+    let btnAjouterClient = document.getElementById("btnAjouterClient");
     searchFild.addEventListener("change", function () {
         console.log("Wow");
     });
     bnteffacerClient.addEventListener("click", function () {
-        effacerClient(window.idClientEffacer);
-    })
+        deleteClientByID(window.idClientEffacer);
+        bootbox.alert("Hello world!");
+    });
+    btnAjouterClient.addEventListener("click", ajouterClient);
+    getAlldailyActivityLevel();
     loadClients();
 }
 
