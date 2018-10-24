@@ -234,8 +234,8 @@ function listerEntreineur(data) {
     for (let i = 0; i < arrayEntreineurs.length; i++) {
         let col = document.createElement("div");
         let card = document.createElement("div");
-        col.className = "col-sm col-sm-list max-card-size";
-        card.className = "card-element box-shadow-android";
+        col.className = "col-sm col-sm-list max-card-size ";
+        card.className = "card-element box-shadow-android background-entraineur";
         let input = document.createElement("input");
         input.type = "hidden";
         input.value = arrayEntreineurs[i].idEntreineur;
@@ -320,12 +320,20 @@ function sauvegarderEntreineur(aliment) {
 function loadPage() {
     let searchFild = document.getElementById("searchFild");
     let bnteffacerEntreineur = document.getElementById("bnteffacerEntreineur");
+    let btnAjouterEntreineur = document.getElementById("btnAjouterEntreineur");
+    let btnSauvegarderEntreineur = document.getElementById("btnSauvegarderEntreineur");
     searchFild.addEventListener("change", function () {
         console.log("Wow");
     });
     bnteffacerEntreineur.addEventListener("click", function () {
         effacerEntreineur(window.idEntreineurEffacer);
-    })
+    });
+    btnAjouterEntreineur.addEventListener("click", function () {
+
+    });
+    btnSauvegarderEntreineur.addEventListener("click", function () {
+
+    });
     loadEntreineur();
 }
 

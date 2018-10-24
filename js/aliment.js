@@ -7,49 +7,49 @@ let alimentSelecioner = {
     "portionSize": null,
     "nutrients": [
         {
-            "idNutrient": null,
+            "idNutrient": 1,
             "total": 0
         },
         {
-            "idNutrient": null,
+            "idNutrient": 2,
             "total": 0
         },
         {
-            "idNutrient": null,
+            "idNutrient": 3,
             "total": 0
         },
         {
-            "idNutrient": null,
+            "idNutrient": 4,
             "total": 0
         },
         {
-            "idNutrient": null,
+            "idNutrient": 5,
             "total": 0
         },
         {
-            "idNutrient": null,
+            "idNutrient": 6,
             "total": 0
         },
         {
-            "idNutrient": null,
+            "idNutrient": 7,
             "total": 0
         },
         {
-            "idNutrient": null,
+            "idNutrient": 8,
             "total": 0
         }
     ],
     "macros": [
         {
-            "idMacro": null,
+            "idMacro": 1,
             "macro": "Fat"
         },
         {
-            "idMacro": null,
+            "idMacro": 2,
             "macro": "Carbohydrate"
         },
         {
-            "idMacro": null,
+            "idMacro": 3,
             "macro": "Protein"
         }
     ]
@@ -143,7 +143,7 @@ function getAlimentById(id, callback) {
         }
     });
 
-    xhr.open("GET",  baseURL + "/food?idFood=" + id);
+    xhr.open("GET", baseURL + "/food?idFood=" + id);
     xhr.setRequestHeader("cache-control", "no-cache");
     xhr.setRequestHeader("Postman-Token", "a8aa36ca-fc2f-49da-8528-567376557fe1");
 
@@ -264,63 +264,21 @@ function ajouterAliment(aliment) {
 
 function editerAliment(aliment) {
 
-    var data = JSON.stringify({
-        "name": aliment.name,
-        "brand": aliment.brand,
-        "portionSize": aliment.portionSize,
-        "nutrients": [
-            {
-                "idNutrient": aliment.nutrients[0].idNutrient,
-                "total": aliment.nutrients[0].total
-            },
-            {
-                "idNutrient": aliment.nutrients[1].idNutrient,
-                "total": aliment.nutrients[1].total
-            },
-            {
-                "idNutrient": aliment.nutrients[2].idNutrient,
-                "total": aliment.nutrients[2].total
-            },
-            {
-                "idNutrient": aliment.nutrients[3].idNutrient,
-                "total": aliment.nutrients[3].total
-            },
-            {
-                "idNutrient": aliment.nutrients[4].idNutrient,
-                "total": aliment.nutrients[4].total
-            },
-            {
-                "idNutrient": aliment.nutrients[5].idNutrient,
-                "total": aliment.nutrients[5].total
-            },
-            {
-                "idNutrient": aliment.nutrients[6].idNutrient,
-                "total": aliment.nutrients[6].total
-            },
-            {
-                "idNutrient": aliment.nutrients[7].idNutrient,
-                "total": aliment.nutrients[7].total
-            }
-        ],
-        "macros": [
-            {
-                "idMacro": aliment.nutrients[0].idMacro
-            },
-            {
-                "idMacro": aliment.nutrients[1].idMacro
-            },
-            {
-                "idMacro": aliment.nutrients[2].idMacro
-            }
-        ]
-    });
+    var data = JSON.stringify(aliment);
 
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
 
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
-            console.log(this.responseText);
+            let donne = JSON.parse(this.responseText);
+            if (donne.httpStatus === 200){
+                bootbox.alert("Le client a été sauvegarder.");
+                $("#editAliment").modal('hide');
+                loadPage();
+            } else {
+                bootbox.alert("Erreur lors de la sauvegarde. Veuillez réessayer ou contactez votre administrateur système.");
+            }
         }
     });
 
@@ -345,7 +303,7 @@ function listerAliment(data) {
         let col = document.createElement("div");
         let card = document.createElement("div");
         col.className = "col-sm col-sm-list max-card-size";
-        card.className = "card-element box-shadow-android max-card-size";
+        card.className = "card-element box-shadow-android background-aliment";
         let input = document.createElement("input");
         input.type = "hidden";
         input.value = arrayAliment[i].idFood;
@@ -412,66 +370,17 @@ function listerAliment(data) {
 
 }
 
-function registrerAlimentSelecioner(aliment) {
-    let alimentSelecioner = {
-        "idFood": null,
-        "name": null,
-        "brand": null,
-        "portionSize": null,
-        "nutrients": [
-            {
-                "idNutrient": null,
-                "total": null
-            },
-            {
-                "idNutrient": null,
-                "total": null
-            },
-            {
-                "idNutrient": null,
-                "total": null
-            },
-            {
-                "idNutrient": null,
-                "total": null
-            },
-            {
-                "idNutrient": null,
-                "total": null
-            },
-            {
-                "idNutrient": null,
-                "total": null
-            },
-            {
-                "idNutrient": null,
-                "total": null
-            },
-            {
-                "idNutrient": null,
-                "total": null
-            }
-        ],
-        "macros": [
-            {
-                "idMacro": aliment.macros[0].idMacro === null ? 0 : aliment.macros[0].idMacro,
-            },
-            {
-                "idMacro": aliment.macros[1].idMacro === null ? 0 : aliment.macros[0].idMacro,
-            },
-            {
-                "idMacro": aliment.macros[2].idMacro === null ? 0 : aliment.macros[0].idMacro,
-            }
-        ]
-    };
-
-
+function creeAlimentSelecioner(aliment) {
+    alimentSelecioner = aliment;
 }
 
 function ouvrirEditForm(id) {
     for (let i = 0; i < listAliment.meta.length; i++) {
-        if (listAliment.meta[i].idFood === id)
-            registrerAlimentSelecioner(listAliment.meta[i]);
+        if (listAliment.meta[i].idFood === Number(id)) {
+            alert("ererer");
+            creeAlimentSelecioner(listAliment.meta[i]);
+        }
+
     }
     let editEditIdAliment = document.getElementById("editEditIdAliment");
     let editEditAlimentNon = document.getElementById("editEditAlimentNon");
@@ -485,22 +394,40 @@ function ouvrirEditForm(id) {
     let editEditAlimentSodium = document.getElementById("editEditAlimentSodium");
     let editEditAlimentCholesterol = document.getElementById("editEditAlimentCholesterol");
     let editEditAlimentIndexGlycemique = document.getElementById("editEditAlimentIndexGlycemique");
-
-}
-
-function sauvegarderAliment(aliment) {
-
+    let editEditAlimentMacroGraisse = document.getElementById("editEditAlimentMacroGraisse");
+    let editEditAlimentMacroGlucides = document.getElementById("editEditAlimentMacroGlucides");
+    let editEditAlimentMacroProteine = document.getElementById("editEditAlimentMacroProteine");
+    editEditIdAliment.setAttribute("value", alimentSelecioner.idFood);
+    editEditAlimentNon.value = alimentSelecioner.name;
+    editEditAlimentMarque.value = alimentSelecioner.brand;
+    editEditAlimentPortionSize.value = alimentSelecioner.portionSize;
+    editEditAlimentGraisse.value = alimentSelecioner.nutrients[0].total;
+    editEditAlimentGlucides.value = alimentSelecioner.nutrients[1].total;
+    editEditAlimentProteine.value = alimentSelecioner.nutrients[2].total;
+    editEditAlimentFibre.value = alimentSelecioner.nutrients[3].total;
+    editEditAlimentSucre.value = alimentSelecioner.nutrients[4].total;
+    editEditAlimentSodium.value = alimentSelecioner.nutrients[5].total;
+    editEditAlimentCholesterol.value = alimentSelecioner.nutrients[6].total;
+    editEditAlimentIndexGlycemique.value = alimentSelecioner.nutrients[7].total;
+    editEditAlimentMacroGraisse.checked = alimentSelecioner.macros[0] != null;
+    editEditAlimentMacroGlucides.checked = alimentSelecioner.macros[1] != null;
+    editEditAlimentMacroProteine.checked = alimentSelecioner.macros[2] != null;
 }
 
 function loadPage() {
     let searchFild = document.getElementById("searchFild");
     let bnteffacerAliment = document.getElementById("bnteffacerAliment");
+    let btnSauvegarderAliment = document.getElementById("btnSauvegarderAliment");
+
     searchFild.addEventListener("change", function () {
         console.log("Wow");
     });
     bnteffacerAliment.addEventListener("click", function () {
         deleteAlimentByID(window.idAlimentEffacer);
-    })
+    });
+    btnSauvegarderAliment.addEventListener("click", function () {
+        editerAliment(alimentSelecioner);
+    });
     loadAliment();
 }
 

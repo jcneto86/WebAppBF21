@@ -1,4 +1,5 @@
 let baseURL = "http://35.183.168.181";
+// let baseURL = "http://10.2.10.165:8080";
 const FIXED_NUMBER_STEP1 = 24;
 const MULTIPLY_NUMBER_MAN = 1.0;
 const MULTIPLY_NUMBER_WOMAN = 0.9;
@@ -139,6 +140,9 @@ function deleteClientByID(id) {
             if (donne.httpStatus === 202) {
                 bootbox.alert("Le client a été supprimé.");
                 $("#effacerClient").modal('hide');
+                loadPage();
+            }else {
+                bootbox.alert("Erreur pour supprimé le client. Veuillez réessayer ou contactez votre administrateur du système.");
             }
         }
     });
@@ -198,6 +202,7 @@ function newClient(client) {
             if (donne.httpStatus === 201) {
                 bootbox.alert("Client enregistré.");
                 viderInputs();
+                loadPage();
                 $("#ajouterClient").modal('hide');
             }
 
@@ -212,13 +217,41 @@ function newClient(client) {
 }
 
 function editerClient(client) {
-    let data = JSON.stringify(client);
+    let data = JSON.stringify({
+        "idClient": client.idClient,
+        "name": client.name,
+        "age": client.age,
+        "gender": client.gender,
+        "email": client.email,
+        "phoneNumber": client.phoneNumber,
+        "height": client.height,
+        "weight": client.weight,
+        "bodyFatPercentage": client.bodyFatPercentage,
+        "bmr": client.bmr,
+        "tdce": client.tdce,
+        "clientGoal": {
+            "idClientGoal": client.clientGoal.idClientGoal
+        },
+        "activityLevel": {
+            "idDailyActivityLevel": client.activityLevel.idDailyActivityLevel
+        },
+        "proteinRequirement": {
+            "idProteinRequirement": client.proteinRequirement.idProteinRequirement
+        }
+    });
     let xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
 
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
-            console.log(this.responseText);
+            let donne = JSON.parse(this.responseText);
+            if (donne.httpStatus === 200) {
+                bootbox.alert("Le client a été sauvegarder.");
+                $("#editClient").modal('hide');
+                loadClients();
+            } else {
+                bootbox.alert("Erreur lors de la sauvegarde. Veuillez réessayer ou contactez votre administrateur du système.");
+            }
         }
     });
 
@@ -244,7 +277,7 @@ function listerClient(data) {
         let col = document.createElement("div");
         let card = document.createElement("div");
         col.className = "col-sm col-sm-list max-card-size";
-        card.className = "card-element box-shadow-android";
+        card.className = "card-element box-shadow-android background-client";
         let input = document.createElement("input");
         input.type = "hidden";
         input.value = arrayClients[i].idClient;
@@ -261,6 +294,7 @@ function listerClient(data) {
         iconPen.className = "fas fa-pen";
         let iconTrash = document.createElement("i");
         iconTrash.className = "fas fa-trash-alt";
+        card.setAttribute("data-value", arrayClients[i].idClient);
         buttonEditer.setAttribute("data-toggle", "modal");
         buttonEditer.setAttribute("data-target", "#editClient");
         buttonEditer.setAttribute("data-value", arrayClients[i].idClient);
@@ -308,6 +342,17 @@ function listerClient(data) {
             e.preventDefault();
         });
     }
+    let cardElement = document.getElementsByTagName("card-element");
+    for (let i = 0; i < cardElement.length; i++) {
+        cardElement[i].addEventListener("click", function (e) {
+            let id = e.currentTarget.getAttribute("data-value");
+            // $(this)
+            window.idClientOuvrirPlan = id;
+            alert(window.window.idClientOuvrirPlan);
+            // ouvrirEditForm(window.idClientEditer);
+            // e.preventDefault();
+        });
+    }
 }
 
 function creeClientSelecioner(client) {
@@ -337,7 +382,7 @@ function creeClientSelecioner(client) {
 
 function ouvrirEditForm(id) {
     for (let i = 0; i < listClient.meta.length; i++) {
-        if (listClient.meta[i].idClient === id)
+        if (listClient.meta[i].idClient === Number(id))
             creeClientSelecioner(listClient.meta[i]);
     }
     let inputEditCleintNon = document.getElementById("inputEditCleintNon");
@@ -394,6 +439,7 @@ function sauvegarderClient() {
     clientSelecioner.proteinRequirement.idProteinRequirement = Number(inputEditProteinRequirement.value);
     clientSelecioner.bmr = Number(calBMR(clientSelecioner));
     clientSelecioner.tdce = Number(calTDCE(clientSelecioner));
+    editerClient(clientSelecioner);
 
 }
 
@@ -535,7 +581,7 @@ function ajouterClient() {
     clientPourAjouter.bmr = Number(calBMR(clientPourAjouter));
     clientPourAjouter.tdce = Number(calTDCE(clientPourAjouter));
     newClient(clientPourAjouter);
-    loadClients();
+    getAllClients(listerClient);
 
 }
 
@@ -543,13 +589,16 @@ function ajouterClient() {
 function loadPage() {
     let searchFild = document.getElementById("searchFild");
     let bnteffacerClient = document.getElementById("bnteffacerClient");
+    let btnSauvegarderClient = document.getElementById("btnSauvegarderClient");
     let btnAjouterClient = document.getElementById("btnAjouterClient");
     searchFild.addEventListener("change", function () {
         console.log("Wow");
     });
     bnteffacerClient.addEventListener("click", function () {
         deleteClientByID(window.idClientEffacer);
-        bootbox.alert("Hello world!");
+    });
+    btnSauvegarderClient.addEventListener("click", function () {
+        sauvegarderClient();
     });
     btnAjouterClient.addEventListener("click", ajouterClient);
     getAlldailyActivityLevel();
