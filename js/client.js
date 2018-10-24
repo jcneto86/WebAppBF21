@@ -117,8 +117,6 @@ function getClientById(id, callback) {
 
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
-            console.log("WoWoWoWo\n");
-            console.log(this.responseText + "\n");
             let donne = JSON.parse(this.responseText);
             callback(donne);
         }
@@ -137,13 +135,17 @@ function deleteClientByID(id) {
     xhr.withCredentials = true;
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
-            console.log(this.responseText);
+            let donne = JSON.parse(this.responseText);
+            if (donne.httpStatus === 202) {
+                bootbox.alert("Le client a été supprimé.");
+                $("#effacerClient").modal('hide');
+            }
         }
     });
 
     xhr.open("DELETE", baseURL + "/client?idClient=" + id);
     xhr.setRequestHeader("cache-control", "no-cache");
-    xhr.setRequestHeader("Postman-Token", "1123c3fc-a507-418f-9a07-4508aa6c4ca6");
+    xhr.setRequestHeader("Postman-Token", "562758e1-5e2f-43f8-b8c0-fae70a2dd99b");
 
     xhr.send(data);
 
@@ -155,7 +157,6 @@ function getClientsByQuery(query, callback) {
     xhr.withCredentials = true;
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
-            console.log(this.responseText);
             listClient = JSON.parse(this.responseText);
             callback(listClient);
         }
@@ -194,8 +195,12 @@ function newClient(client) {
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
             let donne = JSON.parse(this.responseText);
-            if (donne.httpStatus === 200)
-                bootbox.alert(":D");
+            if (donne.httpStatus === 201) {
+                bootbox.alert("Client enregistré.");
+                viderInputs();
+                $("#ajouterClient").modal('hide');
+            }
+
         }
     });
     xhr.open("POST", baseURL + "/client");
@@ -207,7 +212,7 @@ function newClient(client) {
 }
 
 function editerClient(client) {
-    let data = client;
+    let data = JSON.stringify(client);
     let xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
 
@@ -390,6 +395,63 @@ function sauvegarderClient() {
     clientSelecioner.bmr = Number(calBMR(clientSelecioner));
     clientSelecioner.tdce = Number(calTDCE(clientSelecioner));
 
+}
+
+function viderInputs() {
+    let inputEditCleintNon = document.getElementById("inputEditCleintNon");
+    let inputEditCourrier = document.getElementById("inputEditCourrier");
+    let inputEditCleintTelephone = document.getElementById("inputEditCleintTelephone");
+    let inputEditAge = document.getElementById("inputEditAge");
+    let inputEditGenre = document.getElementById("inputEditGenre");
+    let inputEditHauteur = document.getElementById("inputEditHauteur");
+    let inputEditPoids = document.getElementById("inputEditPoids");
+    let inputEditObjectif = document.getElementById("inputEditObjectif");
+    let inputEditNvActivite = document.getElementById("inputEditNvActivite");
+    let inputEditProteinRequirement = document.getElementById("inputEditProteinRequirement");
+    let inputEditBMR = document.getElementById("inputEditBMR");
+    let inputEditTDCE = document.getElementById("inputEditTDCE");
+    let inputEditBodyFatPercentage = document.getElementById("inputEditBodyFatPercentage");
+    inputEditCleintNon.value = "";
+    inputEditCourrier.value = "";
+    inputEditCleintTelephone.value = "";
+    inputEditAge.value = "";
+    inputEditGenre.selectedIndex = 0;
+    inputEditHauteur.value = "";
+    inputEditPoids.value = "";
+    inputEditObjectif.selectedIndex = 0;
+    inputEditNvActivite.selectedIndex = 0;
+    inputEditProteinRequirement.selectedIndex = 0;
+    inputEditBMR.value = "";
+    inputEditTDCE.value = "";
+    inputEditBodyFatPercentage.value = "";
+
+    let inputAjouterCleintNon = document.getElementById("inputAjouterCleintNon");
+    let inputAjouterCourrier = document.getElementById("inputAjouterCourrier");
+    let inputAjouterCleintTelephone = document.getElementById("inputAjouterCleintTelephone");
+    let inputAjouterAge = document.getElementById("inputAjouterAge");
+    let inputAjouterGenre = document.getElementById("inputAjouterGenre");
+    let inputAjouterHauteur = document.getElementById("inputAjouterHauteur");
+    let inputAjouterPoids = document.getElementById("inputAjouterPoids");
+    let inputAjouterObjectif = document.getElementById("inputAjouterObjectif");
+    let inputAjouterNvActivite = document.getElementById("inputAjouterNvActivite");
+    let inputAjouterBodyFatPercentage = document.getElementById("inputAjouterBodyFatPercentage");
+    let inputAjouterProteinRequirement = document.getElementById("inputAjouterProteinRequirement");
+    let inputAjouterBMR = document.getElementById("inputEditBMR");
+    let inputAjouterTDCE = document.getElementById("inputEditTDCE");
+    inputAjouterCleintNon.value = "";
+    inputAjouterCourrier.value = "";
+    inputAjouterCleintTelephone.value = "";
+    inputAjouterAge.value = "";
+    inputAjouterGenre.selectedIndex = 0;
+    inputAjouterHauteur.value = "";
+    inputAjouterPoids.value = "";
+    inputAjouterObjectif.selectedIndex = 0;
+    inputAjouterNvActivite.selectedIndex = 0;
+    inputAjouterProteinRequirement.selectedIndex = 0;
+    inputAjouterBMR.value = "";
+    inputAjouterTDCE.value = "";
+    inputAjouterBodyFatPercentage.value = "";
+
 
 }
 
@@ -473,6 +535,8 @@ function ajouterClient() {
     clientPourAjouter.bmr = Number(calBMR(clientPourAjouter));
     clientPourAjouter.tdce = Number(calTDCE(clientPourAjouter));
     newClient(clientPourAjouter);
+    loadClients();
+
 }
 
 
