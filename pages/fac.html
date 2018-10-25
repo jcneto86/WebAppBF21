@@ -42,14 +42,19 @@
                         <i class="far fa-question-circle"></i><span>FAQ</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../pages/fac.html">
-                        <i class="fas fa-sign-out-alt"></i><span>Deconnection</span></a>
+                    <a class="nav-link">
+                        <i id="btnDeconnection" class="fas fa-sign-out-alt"></i><span>Deconnection</span></a>
                 </li>
             </ul>
         </div>
-        <form class="form-inline my-2 my-lg-0 align-content-center search-container">
-            <input id="searchFild" class="form-control mr-sm-2" type="search" placeholder="Search">
-        </form>
+        <div class="nav-item embed-responsive">
+            <form class="form-inline my-2 my-lg-0 align-content-center search-container">
+                <input id="searchFild" class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button id="btnSearchFild" type="button" class="btn btn-primary">
+                    <i class="fas fa-search"> Search</i>
+                </button>
+            </form>
+        </div>
     </div>
 </nav>
 
@@ -60,7 +65,10 @@
             <div class="col">
                 <div class="card-element box-shadow-android background-faq">
                     <h6>Une bonne question à se poser ?</h6>
-                    <p>dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                    <p>dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard
+                        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
+                        to make a type specimen book. It has survived not only five centuries, but also the leap into
+                        electronic typesetting, remaining essentially unchanged.</p>
                     <div class="card-element-bottom-bar float-right">
                         <button class="btn bg-transparent"><i class="fas fa-pen"></i></button>
                         <button class="btn bg-transparent"><i class="fas fa-trash-alt"></i></button>
@@ -144,10 +152,10 @@
                 <form>
                     <input type="hidden" value="" id="inputAjouterFACIdFAC">
                     <div class="form-row">
-                            <label for="inputAjouterFACQuestion">Question</label>
-                            <input type="text" class="form-control" id="inputAjouterFACQuestion" placeholder="Question">
-                            <label for="inputAjouterFACReponce">Réponce</label>
-                            <textarea class="form-control" id="inputAjouterFACReponce" rows="3"></textarea>
+                        <label for="inputAjouterFACQuestion">Question</label>
+                        <input type="text" class="form-control" id="inputAjouterFACQuestion" placeholder="Question">
+                        <label for="inputAjouterFACReponce">Réponce</label>
+                        <textarea class="form-control" id="inputAjouterFACReponce" rows="3"></textarea>
                     </div>
                 </form>
             </div>

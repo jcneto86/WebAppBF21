@@ -1,3 +1,4 @@
+let baseURLSite = "http://localhost:63342/WebAppBF21/";
 var MD5 = {
     MD5: function (d) {
         result = MD5.M(MD5.V(MD5.Y(MD5.X(d), 8 * d.length)));
@@ -60,13 +61,8 @@ var MD5 = {
 }
 
 
-let utilisateur = {
-    "login": null,
-    "password": null
-};
-
-function getLogin(callback) {
-    var data = JSON.stringify({
+function getLogin(utilisateur, callback) {
+    let data = JSON.stringify({
         "login": utilisateur.login,
         "password": utilisateur.password
     });
@@ -76,9 +72,8 @@ function getLogin(callback) {
 
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
-            console.log(this.responseText);
-            let login = JSON.parse(this.responseText);
-            callback(login);
+            let donne = JSON.parse(this.responseText);
+            callback(donne);
         }
     });
 
@@ -91,16 +86,25 @@ function getLogin(callback) {
 
 }
 
-
-function verifierLogin(login) {
-    return login.httpStatus === 200;
+function verifierLogin(donne) {
+    if (donne.httpStatus === 200) {
+        localStorage.setItem('coachOnline', JSON.stringify(donne.meta));
+        window.location.replace(baseURLSite + "/list_client.html");
+    } else {
+        bootbox.alert("Nom d'utilisateur ou mot de passe invalide.");
+    }
 }
+
 
 function ouvertureSession(user, pass) {
     let passMD5 = MD5.MD5(pass);
+    let utilisateur = {
+        "login": null,
+        "password": null
+    };
     utilisateur.login = user;
     utilisateur.password = passMD5
-    alert(getLogin(verifierLogin));
+    getLogin(utilisateur, verifierLogin);
 
     // if (getLogin(user, passMD5, verifierLogin())) {
     //     alert("dfdfsdf");

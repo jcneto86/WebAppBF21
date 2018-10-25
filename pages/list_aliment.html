@@ -41,14 +41,20 @@
                         <i class="far fa-question-circle"></i><span>FAQ</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../pages/fac.html">
-                        <i class="fas fa-sign-out-alt"></i><span>Deconnection</span></a>
+                    <a class="nav-link">
+                        <i id="btnDeconnection" class="fas fa-sign-out-alt"></i><span>Deconnection</span></a>
                 </li>
             </ul>
         </div>
-        <form class="form-inline my-2 my-lg-0 align-content-center search-container">
-            <input id="searchFild" class="form-control mr-sm-2" type="search" placeholder="Search">
-        </form>
+        <div class="nav-item embed-responsive">
+            <form class="form-inline my-2 my-lg-0 align-content-center search-container">
+                <input id="searchFild" class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button id="btnSearchFild" type="button" class="btn btn-primary">
+                    <i class="fas fa-search"> Search</i>
+                </button>
+            </form>
+        </div>
+
     </div>
 </nav>
 
@@ -64,7 +70,8 @@
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="editAliment" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="editAliment" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -89,7 +96,8 @@
                     <div class="form-row">
                         <div class="form-group col-md">
                             <label for="editEditAlimentPortionSize">Taille de la portion</label>
-                            <input type="text" class="form-control" id="editEditAlimentPortionSize" placeholder="Taille de la portion">
+                            <input type="text" class="form-control" id="editEditAlimentPortionSize"
+                                   placeholder="Taille de la portion">
                         </div>
                     </div>
                     <div class="form-row">
@@ -123,11 +131,13 @@
                     <div class="form-row">
                         <div class="form-group col-md">
                             <label for="editEditAlimentCholesterol">Cholestérol</label>
-                            <input type="text" class="form-control" id="editEditAlimentCholesterol" placeholder="Cholestérol">
+                            <input type="text" class="form-control" id="editEditAlimentCholesterol"
+                                   placeholder="Cholestérol">
                         </div>
                         <div class="form-group col-md">
                             <label for="editEditAlimentIndexGlycemique">Index glycémique</label>
-                            <input type="text" class="form-control" id="editEditAlimentIndexGlycemique" placeholder="Index glycémique">
+                            <input type="text" class="form-control" id="editEditAlimentIndexGlycemique"
+                                   placeholder="Index glycémique">
                         </div>
 
                     </div>
@@ -152,13 +162,16 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button id="btnSauvegarderAliment" type="button" class="btn btn-success"><i class="far fa-save"></i> Sauvegarder</button>
+                <button id="btnSauvegarderAliment" type="button" class="btn btn-success"><i class="far fa-save"></i>
+                    Sauvegarder
+                </button>
             </div>
         </div>
     </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="effacerAliment" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="effacerAliment" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -172,13 +185,16 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
-                <button id="bnteffacerAliment" type="button" class="btn btn-success"><i class="far fa-trash-alt"></i> Effacer</button>
+                <button id="bnteffacerAliment" type="button" class="btn btn-success"><i class="far fa-trash-alt"></i>
+                    Effacer
+                </button>
             </div>
         </div>
     </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="ajouterAliment" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="ajouterAliment" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -203,21 +219,25 @@
                     <div class="form-row">
                         <div class="form-group col-md">
                             <label for="inputAjouterAlimentPortionSize">Taille de la portion</label>
-                            <input type="text" class="form-control" id="inputAjouterAlimentPortionSize" placeholder="Taille de la portion">
+                            <input type="text" class="form-control" id="inputAjouterAlimentPortionSize"
+                                   placeholder="Taille de la portion">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md">
                             <label for="inputAjouterAlimentGraisse">Graisse</label>
-                            <input type="text" class="form-control" id="inputAjouterAlimentGraisse" placeholder="Graisse">
+                            <input type="text" class="form-control" id="inputAjouterAlimentGraisse"
+                                   placeholder="Graisse">
                         </div>
                         <div class="form-group col-md">
                             <label for="inputAjouterAlimentGlucides">Glucides</label>
-                            <input type="text" class="form-control" id="inputAjouterAlimentGlucides" placeholder="Glucides">
+                            <input type="text" class="form-control" id="inputAjouterAlimentGlucides"
+                                   placeholder="Glucides">
                         </div>
                         <div class="form-group col-md">
                             <label for="inputAjouterAlimentProteine">Protéine</label>
-                            <input type="text" class="form-control" id="inputAjouterAlimentProteine" placeholder="Protéine">
+                            <input type="text" class="form-control" id="inputAjouterAlimentProteine"
+                                   placeholder="Protéine">
                         </div>
                     </div>
                     <div class="form-row">
@@ -227,21 +247,25 @@
                         </div>
                         <div class="form-group col-md">
                             <label for="inputAjouterAlimentSucre">Sucre</label>
-                            <input type="text" class="form-control" id="inputAjouterAlimentSucre" placeholder="Glucides">
+                            <input type="text" class="form-control" id="inputAjouterAlimentSucre"
+                                   placeholder="Glucides">
                         </div>
                         <div class="form-group col-md">
                             <label for="inputAjouterAlimentSodium">Sodium</label>
-                            <input type="text" class="form-control" id="inputAjouterAlimentSodium" placeholder="Protéine">
+                            <input type="text" class="form-control" id="inputAjouterAlimentSodium"
+                                   placeholder="Protéine">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md">
                             <label for="inputAjouterAlimentCholesterol">Cholestérol</label>
-                            <input type="text" class="form-control" id="inputAjouterAlimentCholesterol" placeholder="Cholestérol">
+                            <input type="text" class="form-control" id="inputAjouterAlimentCholesterol"
+                                   placeholder="Cholestérol">
                         </div>
                         <div class="form-group col-md">
                             <label for="inputAjouterAlimentIndexGlycemique">Index glycémique</label>
-                            <input type="text" class="form-control" id="inputAjouterAlimentIndexGlycemique" placeholder="Index glycémique">
+                            <input type="text" class="form-control" id="inputAjouterAlimentIndexGlycemique"
+                                   placeholder="Index glycémique">
                         </div>
 
                     </div>
@@ -250,15 +274,18 @@
                     </div>
                     <div class="form-row text-center">
                         <div class="form-group col-md">
-                            <input type="checkbox" class="form-check-input" id="editAjouterAlimentMacroGraisse" value="1">
+                            <input type="checkbox" class="form-check-input" id="editAjouterAlimentMacroGraisse"
+                                   value="1">
                             <label class="form-check-label" for="editAjouterAlimentMacroGraisse">Graisse</label>
                         </div>
                         <div class="form-group col-md">
-                            <input type="checkbox" class="form-check-input" id="editAjouterAlimentMacroGlucides" value="2">
+                            <input type="checkbox" class="form-check-input" id="editAjouterAlimentMacroGlucides"
+                                   value="2">
                             <label class="form-check-label" for="editAjouterAlimentMacroGlucides">Glucides</label>
                         </div>
                         <div class="form-group col-md">
-                            <input type="checkbox" class="form-check-input" id="editAjouterAlimentMacroProteine" value="3">
+                            <input type="checkbox" class="form-check-input" id="editAjouterAlimentMacroProteine"
+                                   value="3">
                             <label class="form-check-label" for="editAjouterAlimentMacroProteine">Protéine</label>
                         </div>
                     </div>
@@ -266,7 +293,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
-                <button type="button" class="btn btn-success"><i class="fas fa-plus"></i> Ajouter</button>
+                <button id="btnAjouterClient" type="button" class="btn btn-success"><i class="fas fa-plus"></i> Ajouter</button>
             </div>
         </div>
     </div>
@@ -280,7 +307,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <script src="https://github.com/makeusabrew/bootbox/releases/download/v4.4.0/bootbox.min.js"></script>
+<script src="https://github.com/makeusabrew/bootbox/releases/download/v4.4.0/bootbox.min.js"></script>
 
-    <script src="../js/aliment.js"></script>
+<script src="../js/aliment.js"></script>
 </body>

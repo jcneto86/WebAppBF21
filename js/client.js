@@ -1,5 +1,7 @@
 let baseURL = "http://35.183.168.181";
+let baseURLSite = "http://localhost:63342/WebAppBF21/";
 // let baseURL = "http://10.2.10.165:8080";
+const coachOnline = JSON.parse(localStorage.getItem('coachOnline'));
 const FIXED_NUMBER_STEP1 = 24;
 const MULTIPLY_NUMBER_MAN = 1.0;
 const MULTIPLY_NUMBER_WOMAN = 0.9;
@@ -80,7 +82,8 @@ function getAllClients(callback) {
     xhr.withCredentials = true;
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
-            listClient = JSON.parse(this.responseText);
+            let donne = JSON.parse(this.responseText);
+            listClient = donne.meta;
             callback(listClient);
         }
     });
@@ -141,7 +144,7 @@ function deleteClientByID(id) {
                 bootbox.alert("Le client a été supprimé.");
                 $("#effacerClient").modal('hide');
                 loadPage();
-            }else {
+            } else {
                 bootbox.alert("Erreur pour supprimé le client. Veuillez réessayer ou contactez votre administrateur du système.");
             }
         }
@@ -204,6 +207,8 @@ function newClient(client) {
                 viderInputs();
                 loadPage();
                 $("#ajouterClient").modal('hide');
+            } else {
+                bootbox.alert("Erreur lors de la création du client. Veuillez réessayer ou contactez votre administrateur du système.");
             }
 
         }
@@ -248,9 +253,10 @@ function editerClient(client) {
             if (donne.httpStatus === 200) {
                 bootbox.alert("Le client a été sauvegarder.");
                 $("#editClient").modal('hide');
-                loadClients();
+                viderInputs();
+                loadPage();
             } else {
-                bootbox.alert("Erreur lors de la sauvegarde. Veuillez réessayer ou contactez votre administrateur du système.");
+                bootbox.alert("Erreur lors de la sauvegarde de la edition. Veuillez réessayer ou contactez votre administrateur du système.");
             }
         }
     });
@@ -264,10 +270,10 @@ function editerClient(client) {
 
 }
 
-function listerClient(data) {
+function listerClient(listclient) {
     let nbRow = 1;
     let nbCol = 1;
-    let arrayClients = data.meta;
+    let arrayClients = listclient;
     let conteiner = document.getElementById("listClient");
     conteiner.innerHTML = "";
     let row = document.createElement("div");
@@ -286,10 +292,14 @@ function listerClient(data) {
         nonClient.append(textNonClient);
         let cardBottomBar = document.createElement("div");
         cardBottomBar.className = "card-element-bottom-bar float-right";
+        let buttonPlan = document.createElement("button");
+        buttonPlan.className = "btn bg-transparent btn-plan";
         let buttonEffacer = document.createElement("button");
         buttonEffacer.className = "btn bg-transparent btn-effacer";
         let buttonEditer = document.createElement("button");
         buttonEditer.className = "btn bg-transparent btn-editer";
+        let iconPlan = document.createElement("i");
+        iconPlan.className = "far fa-calendar-alt";
         let iconPen = document.createElement("i");
         iconPen.className = "fas fa-pen";
         let iconTrash = document.createElement("i");
@@ -301,8 +311,11 @@ function listerClient(data) {
         buttonEffacer.setAttribute("data-toggle", "modal");
         buttonEffacer.setAttribute("data-target", "#effacerClient");
         buttonEffacer.setAttribute("data-value", arrayClients[i].idClient);
+        buttonPlan.setAttribute("data-value", arrayClients[i].idClient);
+        buttonPlan.append(iconPlan);
         buttonEffacer.append(iconTrash);
         buttonEditer.append(iconPen);
+        cardBottomBar.append(buttonPlan);
         cardBottomBar.append(buttonEditer);
         cardBottomBar.append(buttonEffacer);
         card.append(input);
@@ -338,19 +351,20 @@ function listerClient(data) {
             let id = e.currentTarget.getAttribute("data-value");
             // $(this)
             window.idClientEditer = id;
+            alert(id);
             ouvrirEditForm(window.idClientEditer);
             e.preventDefault();
         });
     }
-    let cardElement = document.getElementsByTagName("card-element");
-    for (let i = 0; i < cardElement.length; i++) {
-        cardElement[i].addEventListener("click", function (e) {
+    let btnPlan = document.getElementsByClassName("btn-plan");
+    for (let i = 0; i < btnPlan.length; i++) {
+        btnPlan[i].addEventListener("click", function (e) {
             let id = e.currentTarget.getAttribute("data-value");
             // $(this)
-            window.idClientOuvrirPlan = id;
-            alert(window.window.idClientOuvrirPlan);
+            localStorage.setItem('idClientOuvrirPlan', id);
             // ouvrirEditForm(window.idClientEditer);
-            // e.preventDefault();
+            window.location.replace(baseURLSite + "/plan_du_client.html");
+            e.preventDefault();
         });
     }
 }
@@ -380,10 +394,11 @@ function creeClientSelecioner(client) {
     };
 }
 
+
 function ouvrirEditForm(id) {
-    for (let i = 0; i < listClient.meta.length; i++) {
-        if (listClient.meta[i].idClient === Number(id))
-            creeClientSelecioner(listClient.meta[i]);
+    for (let i = 0; i < listClient.length; i++) {
+        if (listClient[i].idClient === Number(id))
+            creeClientSelecioner(listClient[i]);
     }
     let inputEditCleintNon = document.getElementById("inputEditCleintNon");
     let inputEditCourrier = document.getElementById("inputEditCourrier");
@@ -585,14 +600,34 @@ function ajouterClient() {
 
 }
 
+function searchClient(string) {
+    let listSearchtaClient = [];
+    var res = string.toUpperCase();
+    for (let i = 0; i < listClient.length; i++) {
+        let strintClient = listClient[i].name.toUpperCase();
+        if (strintClient.indexOf(res) !== -1) {
+            listSearchtaClient.push(listClient[i]);
+        }
+    }
+    listerClient(listSearchtaClient);
+}
+
 
 function loadPage() {
     let searchFild = document.getElementById("searchFild");
+    let btnDeconnection = document.getElementById("btnDeconnection");
+    btnDeconnection.addEventListener("click", function () {
+        localStorage.removeItem('coachOnline');
+        window.location.replace(baseURLSite + "index.html");
+    });
     let bnteffacerClient = document.getElementById("bnteffacerClient");
     let btnSauvegarderClient = document.getElementById("btnSauvegarderClient");
     let btnAjouterClient = document.getElementById("btnAjouterClient");
-    searchFild.addEventListener("change", function () {
+    let btnSearchFild = document.getElementById("btnSearchFild");
+    btnSearchFild.addEventListener("click", function () {
         console.log("Wow");
+        let string = searchFild.value;
+        searchClient(string);
     });
     bnteffacerClient.addEventListener("click", function () {
         deleteClientByID(window.idClientEffacer);
@@ -601,6 +636,7 @@ function loadPage() {
         sauvegarderClient();
     });
     btnAjouterClient.addEventListener("click", ajouterClient);
+
     getAlldailyActivityLevel();
     loadClients();
 }

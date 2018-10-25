@@ -1,4 +1,6 @@
 let baseURL = "http://35.183.168.181";
+let baseURLSite = "http://localhost:63342/WebAppBF21/";
+const coachOnline = JSON.parse(localStorage.getItem('coachOnline'));
 let listEntreineur;
 var MD5 = {
     MD5: function (d) {
@@ -66,17 +68,14 @@ let entreineurSelecioner = {
     "login": null,
     "password": null,
     "email": null,
-    "phoneNumber": null,
-    "creationDate": null
+    "phoneNumber": null
 };
 let entreineurPourAjouter = {
-    "idCoach": null,
     "name": null,
     "login": null,
     "password": null,
     "email": null,
     "phoneNumber": null,
-    "creationDate": null
 };
 
 function getAllEntreineur(callback) {
@@ -87,7 +86,8 @@ function getAllEntreineur(callback) {
 
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
-            listEntreineur = JSON.parse(this.responseText);
+            let donne = JSON.parse(this.responseText);
+            listEntreineur = donne.meta;
             callback(listEntreineur);
         }
     });
@@ -130,8 +130,11 @@ function deleteEntreineurByID(id) {
         if (this.readyState === 4) {
             let donne = JSON.parse(this.responseText);
             if (donne.httpStatus === 202) {
-                bootbox.alert("Le client a été supprimé.");
+                bootbox.alert("L'entreineur a été supprimé.");
                 $("#effacerEntreineur").modal('hide');
+                loadPage();
+            } else {
+                bootbox.alert("Erreur pour supprimé l'entreineur. Veuillez réessayer ou contactez votre administrateur du système.");
             }
         }
     });
@@ -153,7 +156,8 @@ function getEntreineurByQuery(query, callback) {
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
             listClient = JSON.parse(this.responseText);
-            callback(listClient);        }
+            callback(listClient);
+        }
     });
 
     xhr.open("GET", baseURL + "/coach/list?query=" + query);
@@ -167,7 +171,7 @@ function newEntreineur(entreineur) {
     var data = JSON.stringify({
         "name": entreineur.name,
         "login": entreineur.login,
-        "password": MD5.MD5(entreineur.password),
+        "password": entreineur.password,
         "email": entreineur.email,
         "phoneNumber": entreineur.phoneNumber
     });
@@ -181,8 +185,12 @@ function newEntreineur(entreineur) {
             if (donne.httpStatus === 201) {
                 bootbox.alert("Entreineur enregistré.");
                 viderInputs();
+                loadPage();
                 $("#ajouterEntreineur").modal('hide');
-            }        }
+            } else {
+                bootbox.alert("Erreur lors de la création de l'entreineur. Veuillez réessayer ou contactez votre administrateur du système.");
+            }
+        }
     });
 
     xhr.open("POST", baseURL + "/coach");
@@ -199,7 +207,7 @@ function editerEntreineur(entreineur) {
         "idCoach": entreineur.idCoach,
         "name": entreineur.name,
         "login": entreineur.login,
-        "password": MD5.MD5(entreineur.password),
+        "password": entreineur.password,
         "email": entreineur.email,
         "phoneNumber": entreineur.phoneNumber
     });
@@ -209,7 +217,14 @@ function editerEntreineur(entreineur) {
 
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
-            console.log(this.responseText);
+            let donne = JSON.parse(this.responseText);
+            if (donne.httpStatus === 200) {
+                bootbox.alert("L'entreineur a été sauvegarder.");
+                $("#editEntreineur").modal('hide');
+                loadPage();
+            } else {
+                bootbox.alert("Erreur lors de la sauvegarde de la edition. Veuillez réessayer ou contactez votre administrateur du système.");
+            }
         }
     });
 
@@ -225,7 +240,7 @@ function editerEntreineur(entreineur) {
 function listerEntreineur(data) {
     let nbRow = 1;
     let nbCol = 1;
-    let arrayEntreineurs = data.meta;
+    let arrayEntreineurs = data;
     let conteiner = document.getElementById("listEntreineur");
     conteiner.innerHTML = "";
     let row = document.createElement("div");
@@ -238,7 +253,7 @@ function listerEntreineur(data) {
         card.className = "card-element box-shadow-android background-entraineur";
         let input = document.createElement("input");
         input.type = "hidden";
-        input.value = arrayEntreineurs[i].idEntreineur;
+        input.value = arrayEntreineurs[i].idCoach;
         let nonEntreineur = document.createElement("h6");
         let textNonEntreineur = document.createTextNode(arrayEntreineurs[i].name);
         nonEntreineur.append(textNonEntreineur);
@@ -254,10 +269,10 @@ function listerEntreineur(data) {
         iconTrash.className = "fas fa-trash-alt";
         buttonEditer.setAttribute("data-toggle", "modal");
         buttonEditer.setAttribute("data-target", "#editEntreineur");
-        buttonEditer.setAttribute("data-value", arrayEntreineurs[i].idEntreineur);
+        buttonEditer.setAttribute("data-value", arrayEntreineurs[i].idCoach);
         buttonEffacer.setAttribute("data-toggle", "modal");
         buttonEffacer.setAttribute("data-target", "#effacerEntreineur");
-        buttonEffacer.setAttribute("data-value", arrayEntreineurs[i].idEntreineur);
+        buttonEffacer.setAttribute("data-value", arrayEntreineurs[i].idCoach);
         buttonEffacer.append(iconTrash);
         buttonEditer.append(iconPen);
         cardBottomBar.append(buttonEditer);
@@ -305,15 +320,112 @@ function registreEntreineurSelecioner(data) {
 
 }
 
+function ajouterEntreineur() {
+    let inputAjouterEntreineurConfirmerPassword = document.getElementById("inputAjouterEntreineurConfirmerPassword");
+    let inputAjouterEntreineurPassword = document.getElementById("inputAjouterEntreineurPassword");
+    let inputAjouterEntreineurTelephone = document.getElementById("inputAjouterEntreineurTelephone");
+    let inputAjouterEntreineurCourrier = document.getElementById("inputAjouterEntreineurCourrier");
+    let inputAjouterEntreineurLogin = document.getElementById("inputAjouterEntreineurLogin");
+    let inputAjouterEntreineurNon = document.getElementById("inputAjouterEntreineurNon");
+    entreineurPourAjouter.name = inputAjouterEntreineurNon.value;
+    entreineurPourAjouter.login = inputAjouterEntreineurLogin.value;
+    entreineurPourAjouter.email = inputAjouterEntreineurCourrier.value;
+    entreineurPourAjouter.phoneNumber = inputAjouterEntreineurTelephone.value;
+    entreineurPourAjouter.password = MD5.MD5(inputAjouterEntreineurPassword.value);
+    if (inputAjouterEntreineurPassword.value === inputAjouterEntreineurConfirmerPassword.value) {
+        newEntreineur(entreineurPourAjouter);
+        getAllEntreineur(listerEntreineur);
+    } else {
+        inputAjouterEntreineurConfirmerPassword.className = "form-control border-danger";
+        inputAjouterEntreineurPassword.className = "form-control border-danger";
+        bootbox.alert("Confirmer le mot de passe!");
+    }
+}
+
+function viderInputs() {
+    let inputEditEntreineurNon = document.getElementById("inputEditEntreineurNon");
+    let inputEditEntreineurLogin = document.getElementById("inputEditEntreineurLogin");
+    let inputEditEntreineurCourrier = document.getElementById("inputEditEntreineurCourrier");
+    let inputEditEntreineurTelephone = document.getElementById("inputEditEntreineurTelephone");
+    let inputEditEntreineurPassword = document.getElementById("inputEditEntreineurPassword");
+    let inputEditEntreineurConfirmerPassword = document.getElementById("inputEditEntreineurConfirmerPassword");
+    let inputAjouterEntreineurConfirmerPassword = document.getElementById("inputAjouterEntreineurConfirmerPassword");
+    let inputAjouterEntreineurPassword = document.getElementById("inputAjouterEntreineurPassword");
+    let inputAjouterEntreineurTelephone = document.getElementById("inputAjouterEntreineurTelephone");
+    let inputAjouterEntreineurCourrier = document.getElementById("inputAjouterEntreineurCourrier");
+    let inputAjouterEntreineurLogin = document.getElementById("inputAjouterEntreineurLogin");
+    let inputAjouterEntreineurNon = document.getElementById("inputAjouterEntreineurNon");
+    inputEditEntreineurNon.value = "";
+    inputEditEntreineurLogin.value = "";
+    inputEditEntreineurCourrier.value = "";
+    inputEditEntreineurTelephone.value = "";
+    inputEditEntreineurPassword.value = "";
+    inputEditEntreineurConfirmerPassword.value = "";
+    inputAjouterEntreineurConfirmerPassword.value = "";
+    inputAjouterEntreineurPassword.value = "";
+    inputAjouterEntreineurTelephone.value = "";
+    inputAjouterEntreineurCourrier.value = "";
+    inputAjouterEntreineurLogin.value = "";
+    inputAjouterEntreineurNon.value = "";
+}
+
 function effacerEntreineur(id) {
 
 }
 
-function ouvrirEditForm(id) {
-
+function creeEntreineurSelecioner(entreineur) {
+    entreineurSelecioner = {
+        "idCoach": entreineur.idCoach,
+        "name": entreineur.name,
+        "login": entreineur.login,
+        "password": entreineur.password,
+        "email": entreineur.email,
+        "phoneNumber": entreineur.phoneNumber
+    };
 }
 
-function sauvegarderEntreineur(aliment) {
+function ouvrirEditForm(id) {
+    for (let i = 0; i < listEntreineur.length; i++) {
+        if (listEntreineur[i].idCoach === Number(id))
+            creeEntreineurSelecioner(listEntreineur[i]);
+    }
+    let inputEditEntreineurNon = document.getElementById("inputEditEntreineurNon");
+    let inputEditEntreineurLogin = document.getElementById("inputEditEntreineurLogin");
+    let inputEditEntreineurCourrier = document.getElementById("inputEditEntreineurCourrier");
+    let inputEditEntreineurTelephone = document.getElementById("inputEditEntreineurTelephone");
+    let inputEditEntreineurPassword = document.getElementById("inputEditEntreineurPassword");
+    let inputEditEntreineurConfirmerPassword = document.getElementById("inputEditEntreineurConfirmerPassword");
+    inputEditEntreineurNon.value = entreineurSelecioner.name;
+    inputEditEntreineurLogin.value = entreineurSelecioner.login;
+    inputEditEntreineurCourrier.value = entreineurSelecioner.email;
+    inputEditEntreineurTelephone.value = entreineurSelecioner.phoneNumber;
+    inputEditEntreineurPassword.value = entreineurSelecioner.password;
+    inputEditEntreineurConfirmerPassword.value = entreineurSelecioner.password;
+}
+
+function sauvegarderEntreineur() {
+    let inputEditEntreineurNon = document.getElementById("inputEditEntreineurNon");
+    let inputEditEntreineurLogin = document.getElementById("inputEditEntreineurLogin");
+    let inputEditEntreineurCourrier = document.getElementById("inputEditEntreineurCourrier");
+    let inputEditEntreineurTelephone = document.getElementById("inputEditEntreineurTelephone");
+    let inputEditEntreineurPassword = document.getElementById("inputEditEntreineurPassword");
+    let inputEditEntreineurConfirmerPassword = document.getElementById("inputEditEntreineurConfirmerPassword");
+    entreineurSelecioner.name = inputEditEntreineurNon.value;
+    entreineurSelecioner.login = inputEditEntreineurLogin.value;
+    entreineurSelecioner.email = inputEditEntreineurCourrier.value;
+    entreineurSelecioner.phoneNumber = inputEditEntreineurTelephone.value;
+    if (inputEditEntreineurPassword.value !== entreineurSelecioner.password) {
+        entreineurSelecioner.password = MD5.MD5(inputEditEntreineurPassword.value);
+    }
+
+    if (inputEditEntreineurPassword.value === inputEditEntreineurConfirmerPassword.value) {
+        editerEntreineur(entreineurSelecioner);
+        getAllEntreineur(listerEntreineur);
+    } else {
+        inputEditEntreineurPassword.className = "form-control border-danger";
+        inputEditEntreineurConfirmerPassword.className = "form-control border-danger";
+        bootbox.alert("Confirmer le mot de passe!");
+    }
 
 }
 
@@ -322,17 +434,23 @@ function loadPage() {
     let bnteffacerEntreineur = document.getElementById("bnteffacerEntreineur");
     let btnAjouterEntreineur = document.getElementById("btnAjouterEntreineur");
     let btnSauvegarderEntreineur = document.getElementById("btnSauvegarderEntreineur");
-    searchFild.addEventListener("change", function () {
+    let btnSearchFild = document.getElementById("btnSearchFild");
+    let btnDeconnection = document.getElementById("btnDeconnection");
+    btnDeconnection.addEventListener("click", function () {
+        localStorage.removeItem('coachOnline');
+        window.location.replace(baseURLSite + "index.html");
+    });
+    btnSearchFild.addEventListener("click", function () {
         console.log("Wow");
+        let string = searchFild.value;
+        searchClient(string);
     });
     bnteffacerEntreineur.addEventListener("click", function () {
         effacerEntreineur(window.idEntreineurEffacer);
     });
-    btnAjouterEntreineur.addEventListener("click", function () {
-
-    });
+    btnAjouterEntreineur.addEventListener("click", ajouterEntreineur);
     btnSauvegarderEntreineur.addEventListener("click", function () {
-
+        sauvegarderEntreineur();
     });
     loadEntreineur();
 }
