@@ -478,7 +478,6 @@ function creeAlimentSelecioner(aliment) {
 function ouvrirEditForm(id) {
     for (let i = 0; i < listAliment.meta.length; i++) {
         if (listAliment.meta[i].idFood === Number(id)) {
-            alert("ererer");
             creeAlimentSelecioner(listAliment.meta[i]);
         }
     }

@@ -1,5 +1,5 @@
 let baseURL = "http://35.183.168.181";
-let baseURLSite = "http://localhost:63342/WebAppBF21/";
+let baseURLSite = "http://localhost:63342/WebAppBF21";
 const coachOnline = JSON.parse(localStorage.getItem('coachOnline'));
 let listEntreineur;
 var MD5 = {

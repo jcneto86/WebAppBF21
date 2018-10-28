@@ -1,12 +1,11 @@
 let baseURL = "http://35.183.168.181";
-let baseURLSite = "http://localhost:63342/WebAppBF21/";
+let baseURLSite = "http://localhost:63342/WebAppBF21";
 const coachOnline = JSON.parse(localStorage.getItem('coachOnline'));
 let idClientOuvrirPlan = localStorage.getItem('idClientOuvrirPlan');
 let clientSelecione;
 let listPlan;
 let listAliments;
 let planSelecioner = {};
-alert(idClientOuvrirPlan);
 
 
 function getClientById(id, callback) {
@@ -102,6 +101,8 @@ function creePlanSelecioner(data) {
 
 }
 
+
+
 function effacerPlan(id) {
 
 }
@@ -152,6 +153,7 @@ function setMois(data) {
 
 function loadPage() {
     getAllAliment();
+    getClientById(idClientOuvrirPlan, creeClientSelecioner);
     let searchFild = document.getElementById("searchFild");
     let bnteffacerPlan = document.getElementById("bnteffacerPlan");
     let btnDeconnection = document.getElementById("btnDeconnection");
@@ -164,12 +166,12 @@ function loadPage() {
     });
     bnteffacerPlan.addEventListener("click", function () {
         effacerPlan(window.idPlanEffacer);
-    })
+    });
     loadPlan();
 }
 
 function loadPlan() {
-    getAllPlanByClient(listerPlan);
+    getAllPlanByClient(idClientOuvrirPlan, listerPlan);
 }
 
 (function () {

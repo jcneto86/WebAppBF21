@@ -1,5 +1,5 @@
 let baseURL = "http://35.183.168.181";
-let baseURLSite = "http://localhost:63342/WebAppBF21/";
+let baseURLSite = "http://localhost:63342/WebAppBF21";
 // let baseURL = "http://10.2.10.165:8080";
 const coachOnline = JSON.parse(localStorage.getItem('coachOnline'));
 const FIXED_NUMBER_STEP1 = 24;
@@ -351,7 +351,6 @@ function listerClient(listclient) {
             let id = e.currentTarget.getAttribute("data-value");
             // $(this)
             window.idClientEditer = id;
-            alert(id);
             ouvrirEditForm(window.idClientEditer);
             e.preventDefault();
         });
@@ -363,7 +362,7 @@ function listerClient(listclient) {
             // $(this)
             localStorage.setItem('idClientOuvrirPlan', id);
             // ouvrirEditForm(window.idClientEditer);
-            window.location.replace(baseURLSite + "/plan_du_client.html");
+            window.location.replace(baseURLSite + "/pages/plan_du_client.html");
             e.preventDefault();
         });
     }
