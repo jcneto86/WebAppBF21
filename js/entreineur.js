@@ -438,7 +438,7 @@ function loadPage() {
     let btnDeconnection = document.getElementById("btnDeconnection");
     btnDeconnection.addEventListener("click", function () {
         localStorage.removeItem('coachOnline');
-        window.location.replace(baseURLSite + "index.html");
+        window.location.replace(baseURLSite + "/index.html");
     });
     btnSearchFild.addEventListener("click", function () {
         console.log("Wow");
