@@ -56,55 +56,55 @@ let alimentSelecioner = {
     ]
 };
 let alimentPourAjouter = {
-    "idFood": null,
-    "name": null,
-    "brand": null,
-    "portionSize": null,
+    "idFood": "",
+    "name": "",
+    "brand": "",
+    "portionSize": "",
     "nutrients": [
         {
-            "idNutrient": null,
-            "total": null
+            "idNutrient": 1,
+            "total": 0
         },
         {
-            "idNutrient": null,
-            "total": null
+            "idNutrient": 2,
+            "total": 0
         },
         {
-            "idNutrient": null,
-            "total": null
+            "idNutrient": 3,
+            "total": 0
         },
         {
-            "idNutrient": null,
-            "total": null
+            "idNutrient": 4,
+            "total": 0
         },
         {
-            "idNutrient": null,
-            "total": null
+            "idNutrient": 5,
+            "total": 0
         },
         {
-            "idNutrient": null,
-            "total": null
+            "idNutrient": 6,
+            "total": 0
         },
         {
-            "idNutrient": null,
-            "total": null
+            "idNutrient": 7,
+            "total": 0
         },
         {
-            "idNutrient": null,
-            "total": null
+            "idNutrient": 8,
+            "total": 0
         }
     ],
     "macros": [
         {
-            "idMacro": null,
+            "idMacro": "",
             "macro": "Fat"
         },
         {
-            "idMacro": null,
+            "idMacro": "",
             "macro": "Carbohydrate"
         },
         {
-            "idMacro": null,
+            "idMacro": "",
             "macro": "Protein"
         }
     ]
@@ -241,13 +241,13 @@ function newAliment(aliment) {
         ],
         "macros": [
             {
-                "idMacro": aliment.nutrients[0].idMacro
+                "idMacro": aliment.nutrients[0].idMacro != null ? aliment.nutrients[0].idMacro : null,
             },
             {
-                "idMacro": aliment.nutrients[1].idMacro
+                "idMacro": aliment.nutrients[1].idMacro != null ? aliment.nutrients[1].idMacro : null,
             },
             {
-                "idMacro": aliment.nutrients[2].idMacro
+                "idMacro": aliment.nutrients[2].idMacro != null ? aliment.nutrients[2].idMacro : null,
             }
         ]
     });
@@ -361,7 +361,7 @@ function listerAliment(data) {
         btnEffacer[i].addEventListener("click", function (e) {
             let id = e.currentTarget.getAttribute("data-value");
             // $(this)
-            window.idClientEffacer = id;
+            window.idAlimentEffacer = id;
             e.preventDefault();
         });
     }
@@ -379,7 +379,7 @@ function listerAliment(data) {
 }
 
 function creeAlimentSelecioner(aliment) {
-    if (aliment.macro != null) {
+    if (aliment.macro != null || aliment.macro === "") {
         alimentSelecioner = {
             "idFood": aliment.idFood,
             "name": aliment.name,
@@ -541,13 +541,43 @@ function sauvegarderAliment() {
     alimentSelecioner.nutrients[5].total = editEditAlimentSodium.value;
     alimentSelecioner.nutrients[6].total = editEditAlimentCholesterol.value;
     alimentSelecioner.nutrients[7].total = editEditAlimentIndexGlycemique.value;
-    alimentSelecioner.macros[0].idMacro = editEditAlimentMacroGraisse.checked ? 1 : null;
-    alimentSelecioner.macros[1].idMacro = editEditAlimentMacroGlucides.checked ? 2 : null;
-    alimentSelecioner.macros[2].idMacro = editEditAlimentMacroProteine.checked ? 3 : null;
+    alimentSelecioner.macros[0].idMacro = editEditAlimentMacroGraisse.checked ? 1 : "";
+    alimentSelecioner.macros[1].idMacro = editEditAlimentMacroGlucides.checked ? 2 : "";
+    alimentSelecioner.macros[2].idMacro = editEditAlimentMacroProteine.checked ? 3 : "";
     editerAliment(alimentSelecioner);
 }
 
 function ajouterAliment() {
+    let inputAjouterAlimentNon = document.getElementById("inputAjouterAlimentNon");
+    let inputAjouterAlimentMarque = document.getElementById("inputAjouterAlimentMarque");
+    let inputAjouterAlimentPortionSize = document.getElementById("inputAjouterAlimentPortionSize");
+    let inputAjouterAlimentGraisse = document.getElementById("inputAjouterAlimentGraisse");
+    let inputAjouterAlimentGlucides = document.getElementById("inputAjouterAlimentGlucides");
+    let inputAjouterAlimentProteine = document.getElementById("inputAjouterAlimentProteine");
+    let inputAjouterAlimentFibre = document.getElementById("inputAjouterAlimentFibre");
+    let inputAjouterAlimentSucre = document.getElementById("inputAjouterAlimentSucre");
+    let inputAjouterAlimentSodium = document.getElementById("inputAjouterAlimentSodium");
+    let inputAjouterAlimentCholesterol = document.getElementById("inputAjouterAlimentCholesterol");
+    let inputAjouterAlimentIndexGlycemique = document.getElementById("inputAjouterAlimentIndexGlycemique");
+    let inputAjouterAlimentMacroGraisse = document.getElementById("inputAjouterAlimentMacroGraisse");
+    let inputAjouterAlimentMacroGlucides = document.getElementById("inputAjouterAlimentMacroGlucides");
+    let inputAjouterAlimentMacroProteine = document.getElementById("inputAjouterAlimentMacroProteine");
+    alimentPourAjouter.name = inputAjouterAlimentNon.value;
+    alimentPourAjouter.brand = inputAjouterAlimentMarque.value;
+    alimentPourAjouter.portionSize = inputAjouterAlimentPortionSize.value;
+    alimentPourAjouter.nutrients[0].total = inputAjouterAlimentGraisse.value === "" ? 0 : inputAjouterAlimentGraisse.value;
+    alimentPourAjouter.nutrients[1].total = inputAjouterAlimentGlucides.value === "" ? 0 : inputAjouterAlimentGlucides.value;
+    alimentPourAjouter.nutrients[2].total = inputAjouterAlimentProteine.value === "" ? 0 : inputAjouterAlimentProteine.value;
+    alimentPourAjouter.nutrients[3].total = inputAjouterAlimentFibre.value === "" ? 0 : inputAjouterAlimentFibre.value;
+    alimentPourAjouter.nutrients[4].total = inputAjouterAlimentSucre.value === "" ? 0 : inputAjouterAlimentSucre.value;
+    alimentPourAjouter.nutrients[5].total = inputAjouterAlimentSodium.value === "" ? 0 : inputAjouterAlimentSodium.value;
+    alimentPourAjouter.nutrients[6].total = inputAjouterAlimentCholesterol.value === "" ? 0 : inputAjouterAlimentCholesterol.value;
+    alimentPourAjouter.nutrients[7].total = inputAjouterAlimentIndexGlycemique.value === "" ? 0 : inputAjouterAlimentIndexGlycemique.value;
+    alimentPourAjouter.macros[0].idMacro = inputAjouterAlimentMacroGraisse.checked ? 1 : "";
+    alimentPourAjouter.macros[1].idMacro = inputAjouterAlimentMacroGlucides.checked ? 2 : "";
+    alimentPourAjouter.macros[2].idMacro = inputAjouterAlimentMacroProteine.checked ? 3 : "";
+    newAliment(alimentPourAjouter);
+    getAllAliment(listerAliment);
 
 }
 
