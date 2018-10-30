@@ -41,7 +41,7 @@ function getAllAliment() {
         }
     });
 
-    xhr.open("GET", "http://35.183.168.181:80/food/list");
+    xhr.open("GET", baseURL + "/food/list");
     xhr.setRequestHeader("cache-control", "no-cache");
     xhr.setRequestHeader("Postman-Token", "75d0bc71-63aa-4f3e-a65f-fb57a5662500");
 
@@ -72,26 +72,100 @@ function getAllPlanByClient(id, callback) {
 
 }
 
+function getAllFoodPlanDaysbyFoodPlan(idPlan, callback) {
+
+    var data = null;
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+            console.log(this.responseText);
+        }
+    });
+
+    xhr.open("GET", baseURL + "/foodPlan/" + idPlan + "/planDay/list");
+    xhr.setRequestHeader("cache-control", "no-cache");
+    xhr.setRequestHeader("Postman-Token", "15236862-89a0-4474-a204-fb6c718d1e76");
+
+    xhr.send(data);
+    
+}
+
+function getAllFoodPlanMealsbyFoodPlan(idPlan, idDay, callback) {
+
+    var data = null;
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+            console.log(this.responseText);
+        }
+    });
+
+    xhr.open("GET", baseURL + "/foodPlan/" + idPlan + "/planDay/" + idDay + "/planMeal/list");
+    xhr.setRequestHeader("cache-control", "no-cache");
+    xhr.setRequestHeader("Postman-Token", "92f252db-c83f-4030-aac1-cbdcff83273b");
+
+    xhr.send(data);
+
+}
+
 function getPlanById(id, callback) {
+    var data = null;
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+            console.log(this.responseText);
+        }
+    });
+
+    xhr.open("GET", baseURL + "/foodPlan?idFoodPlan=" + id);
+    xhr.setRequestHeader("cache-control", "no-cache");
+    xhr.setRequestHeader("Postman-Token", "6a9e69bc-fd1a-44bc-a7c7-17f5986f538c");
+
+    xhr.send(data);
 
 }
 
 function effacerPlanByID(id) {
 
+    var data = null;
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+            console.log(this.responseText);
+        }
+    });
+
+    xhr.open("DELETE", baseURL + "/foodPlan?idFoodPlan=" + id);
+    xhr.setRequestHeader("cache-control", "no-cache");
+    xhr.setRequestHeader("Postman-Token", "f1b17a22-a4d9-4e35-b87c-4434c0f6dc20");
+
+    xhr.send(data);
+
 
 }
 
-function getPlanByQuery(query, callback) {
 
-}
-
-function ajouterPlan(plan) {
+function newPlan(plan) {
 
 }
 
 function editerPlan(plan) {
 
 }
+
+// /sdfsfdsf/
 
 function listerPlan(data) {
 
