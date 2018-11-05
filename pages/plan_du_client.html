@@ -41,7 +41,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../pages/fac.html">
-                        <i class="fas fa-sign-out-alt"></i><span>Deconnection</span></a>
+                        <i id="btnDeconnection" class="fas fa-sign-out-alt"></i><span>Deconnection</span></a>
                 </li>
             </ul>
         </div>
@@ -49,32 +49,43 @@
 </nav>
 
 
+
 <div class="container margin-top-projet">
-    <div class="row space-row-projet box-shadow-android">
-        <div class="col-sm">
+
+    <div id="infoClient" class="container">
+
+        <div class="row space-row-projet box-shadow-android">
+        <div class="col-sm"> <!-- imagem -->
             <img src="../img/client.png">
         </div>
-        <div class="col-sm">
-            <p id="nomClient">Nom du Client</p>
-            <p><span>Nom du plan de la semaine 1</span></p>
+        <div class="col-sm"> <!-- nome do cliente e do plano -->
+            <p >Nom du Client</p>
+            <p id="infoClientNomPlan"><span>Nom du plan de la semaine 1</span></p>
         </div>
-        <div class="col-sm">
-            <p id="ObjectifClient">Objectif:</p>
-            <p><span>Perte de poids</span></p>
+        <div class="col-sm"> <!-- objetivo do cliente -->
+            <p>Objectif:</p>
+            <p><span id="infoClientobjectifClient">Perte de poids</span></p>
         </div>
-        <div class="col-sm">
+        <div class="col-sm"> <!-- calorias por dia -->
             <p>Calories par jour:</p>
-            <p><span>2000</span></p>
+            <p><span id="infoClientcalParJour">2000</span></p>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4"> <!-- nutrientes por dia -->
             <p>Qtée pour journée:</p>
-            <p>Protéines: <span id="proteinesParJour">155 G./jour</span> Lipides: <span id="lipidesParJour">59 G./jour</span></p>
-            <p>Glucides: <span id="glucidesParJour">116 G./jour</span></p>
+            <p>Protéines:
+                <span id="infoClientproteinesParJour">155 G./jour</span>
+                Lipides: <span id="infoClientlipidesParJour">59 G./jour</span></p>
+            <p>Glucides: <span id="infoClientglucidesParJour">116 G./jour</span></p>
         </div>
     </div>
-    <div class="row">
-        <div class="w-100"></div>
+        <div class="row">
+            <div class="w-100"></div>
+        </div>
+
     </div>
+
+    <!--plan-->
+    <div id="listPlans" class="container">
     <div class="row space-row-projet box-shadow-android day-plan">
         <div class="col-sm-1 info-day-plan">
             <p id="jourSemaine" class="info-day-plan-week">Lun.</p>
@@ -208,6 +219,8 @@
         </div>
         <!--// fin repas-->
     </div>
+    </div>
+    <!--fin plan-->
 </div>
 </div>
 
@@ -222,7 +235,7 @@
         <button class="bubble-button"><i class="fas fa-sync"></i></button>
     </li>
     <li><p class="bubble-p">Supprimer le plan</p>
-        <button class="bubble-button"><i class="far fa-trash-alt"></i></button>
+        <button id="bnteffacerPlan" class="bubble-button"><i class="far fa-trash-alt"></i></button>
     </li>
 </ul>
 <button class="btn button-float-projet button-float" data-toggle="dropdown">
