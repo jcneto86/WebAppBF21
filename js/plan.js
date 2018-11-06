@@ -493,20 +493,6 @@ function getAllAliment() {
 
 }
 
-function getAllAliment2() {
-    $.ajax({
-        type: "get"""
-        url: baseURL + "/food/list",
-        dataType: 'jsonp',
-    }).done(function(json) {
-        if (this.readyState === 4) {
-            let donne = JSON.parse(this.responseText);
-            listAliments = donne.meta;
-            console.log(this.responseText);
-        }
-    });
-
-}
 
 function getAllPlanByClient(id, callback) {
     var data = null;
@@ -624,46 +610,39 @@ function editerPlan(plan) {
 
 }
 
-// /sdfsfdsf/
 
-function afficherClient(client) {
-    let conteiner = document.getElementById("infoClient");
-    conteiner.innerHTML = "";
-    let row = document.createElement("div");
-    row.className = "row row-list space-row-projet";
-    let imgClient = document.createElement("div");
-    imgClient.className = "col-sm";
-    let img = document.createElement("img");
-    img.src = "../img/client.png";
-    imgClient.appendChild(img);
-    let nomClientEtPlan = document.createElement("div");
-    nomClientEtPlan.className = "col-sm";
-    let nomClient = document.createElement("p");
-    nomClient.innerHTML = client.name;
-    let nomPlan = document.createElement("p");
-    nomPlan.innerHTML = planSelecioner.planName;
-    let objet = document.createElement("div");
-    objet.className = "col-sm";
-    let calParjour = document.createElement("div");
-    calParjour.className = "col-sm";
-    let nutrParJour = document.createElement("div");
-    nutrParJour.className = "col-sm";
+function afficherInfoClient(client) {
 
-    let $conteiner = $("infoClient");
-    let $row = $("<div>", { className: "ss"});
-    $conteiner.append()
-
-    let $img = $("img");
-
-    function objAtriuto(conteiner, label, content, id) {
-
-        let cont = ('<div/>', {
-                class: 'col-sm'
-            }).appendTo(conteiner);
-        $("<p/>").text(label).append(cont);
-        $("<p/>", {id: id}).append(cont);
-        return cont;
-    };
+    let infoClientNomClient = document.getElementById("infoClientNomClient");
+    let infoClientNomPlan = document.getElementById("infoClientNomPlan");
+    let infoClientobjectifClient = document.getElementById("infoClientobjectifClient");
+    let infoClientcalParJour = document.getElementById("infoClientcalParJour");
+    let infoClientproteinesParJour = document.getElementById("infoClientproteinesParJour");
+    let infoClientlipidesParJour = document.getElementById("infoClientlipidesParJour");
+    let infoClientglucidesParJour = document.getElementById("infoClientglucidesParJour");
+    infoClientNomClient.innerHTML = client.name;
+    infoClientNomPlan.innerHTML = planSelecioner.planName;
+    infoClientobjectifClient.innerHTML = client.clientGoal.goal;
+    infoClientcalParJour.innerHTML = client.tdce;
+    infoClientproteinesParJour.innerHTML = "";
+    infoClientlipidesParJour.innerHTML = "";
+    infoClientglucidesParJour.innerHTML = "";
+    //
+    // let $conteiner = $("infoClient");
+    // let $row = $("<div>", { className: "ss"});
+    // $conteiner.append()
+    //
+    // let $img = $("img");
+    //
+    // function objAtriuto(conteiner, label, content, id) {
+    //
+    //     let cont = ('<div/>', {
+    //             class: 'col-sm'
+    //         }).appendTo(conteiner);
+    //     $("<p/>").text(label).append(cont);
+    //     $("<p/>", {id: id}).append(cont);
+    //     return cont;
+    // };
 
 
 }
@@ -821,7 +800,6 @@ function setMois(data) {
 
 function loadPage() {
     getAllAliment();
-    getAllAliment();
     getClientById(idClientOuvrirPlan, creeClientSelecioner);
     let bnteffacerPlan = document.getElementById("bnteffacerPlan");
     let btnDeconnection = document.getElementById("btnDeconnection");
@@ -832,7 +810,7 @@ function loadPage() {
     bnteffacerPlan.addEventListener("click", function () {
         effacerPlan(window.idPlanEffacer);
     });
-    afficherClient(clientSelecione);
+    afficherInfoClient(clientSelecione);
     loadPlan();
 }
 
@@ -845,15 +823,15 @@ function loadPlan() {
 })();
 
 
-let window.aide = {
-    create: function(tag, attribute, content){
-        let obj = document.createElement(tag);
-        if (attribute.className) obj.className = attribute.className;
-        if (content) obj.innerHTML(content);
-        return obj;
-    },
-    preppend: function(obj, ){
-
-        return obj;
-    }
-}
+// let window.aide = {
+//     create: function(tag, attribute, content){
+//         let obj = document.createElement(tag);
+//         if (attribute.className) obj.className = attribute.className;
+//         if (content) obj.innerHTML(content);
+//         return obj;
+//     },
+//     preppend: function(obj, ){
+//
+//         return obj;
+//     }
+// }
