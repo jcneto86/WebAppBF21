@@ -49,35 +49,34 @@
 </nav>
 
 
-
 <div class="container margin-top-projet">
 
     <div id="infoClient" class="container">
 
         <div class="row space-row-projet box-shadow-android">
-        <div class="col-sm"> <!-- imagem -->
-            <img src="../img/client.png">
+            <div class="col-sm"> <!-- imagem -->
+                <img src="../img/client.png">
+            </div>
+            <div class="col-sm"> <!-- nome do cliente e do plano -->
+                <p id="infoClientNomClient">Nom du Client</p>
+                <p id="infoClientNomPlan"><span>Nom du plan de la semaine 1</span></p>
+            </div>
+            <div class="col-sm"> <!-- objetivo do cliente -->
+                <p>Objectif:</p>
+                <p><span id="infoClientobjectifClient">Perte de poids</span></p>
+            </div>
+            <div class="col-sm"> <!-- calorias por dia -->
+                <p>Calories par jour:</p>
+                <p><span id="infoClientcalParJour">2000</span></p>
+            </div>
+            <div class="col-sm-4"> <!-- nutrientes por dia -->
+                <p>Qtée pour journée:</p>
+                <p>Protéines:
+                    <span id="infoClientproteinesParJour">155 G./jour</span>
+                    Lipides: <span id="infoClientlipidesParJour">59 G./jour</span></p>
+                <p>Glucides: <span id="infoClientglucidesParJour">116 G./jour</span></p>
+            </div>
         </div>
-        <div class="col-sm"> <!-- nome do cliente e do plano -->
-            <p id="infoClientNomClient">Nom du Client</p>
-            <p id="infoClientNomPlan"><span>Nom du plan de la semaine 1</span></p>
-        </div>
-        <div class="col-sm"> <!-- objetivo do cliente -->
-            <p>Objectif:</p>
-            <p><span id="infoClientobjectifClient">Perte de poids</span></p>
-        </div>
-        <div class="col-sm"> <!-- calorias por dia -->
-            <p>Calories par jour:</p>
-            <p><span id="infoClientcalParJour">2000</span></p>
-        </div>
-        <div class="col-sm-4"> <!-- nutrientes por dia -->
-            <p>Qtée pour journée:</p>
-            <p>Protéines:
-                <span id="infoClientproteinesParJour">155 G./jour</span>
-                Lipides: <span id="infoClientlipidesParJour">59 G./jour</span></p>
-            <p>Glucides: <span id="infoClientglucidesParJour">116 G./jour</span></p>
-        </div>
-    </div>
         <div class="row">
             <div class="w-100"></div>
         </div>
@@ -85,162 +84,1071 @@
     </div>
 
     <!--plan-->
-    <div id="listPlans" class="container">
-    <div class="row space-row-projet box-shadow-android day-plan">
-        <div class="col-sm-1 info-day-plan">
-            <p id="jourSemaine" class="info-day-plan-week">Lun.</p>
-            <p id="jour" class="info-day-plan-day">3</p>
-            <p id="mois" class="info-day-plan-month">Sept.</p>
-            <p id="calParJour" class="info-day-plan-nbkcal">2000</p>
-            <p class="info-day-plan-kcal">Kcal</p>
-        </div>
-        <!--// repas-->
-        <div class="col-sm repas">
-            <div class="info-repas">
-                <div class="repas-top-bar">
-                    <span class="non-repas">Repas 2</span><span class="kcal-day-repas">200Kcal</span>
-                    <button><i class="fas fa-pen"></i></button>
-                </div>
-                <div class="list-repas">
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
+    <div id="listPlan">
+    <div class="container">
+        <div class="row space-row-projet box-shadow-android day-plan">
+            <div class="col-sm-1 info-day-plan">
+                <p class="info-day-plan-week">Lun.</p>
+                <p  class="info-day-plan-day">26</p>
+                <p class="info-day-plan-month">Nov.</p>
+                <p class="info-day-plan-nbkcal">2000</p>
+                <p class="info-day-plan-kcal">Kcal</p>
+            </div>
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 1</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>4 GROS CEUFS ( À LA COQUE)</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!--// fin repas-->
-        <!--// repas-->
-        <div class="col-sm repas">
-            <div class="info-repas">
-                <div class="repas-top-bar">
-                    <span class="non-repas">Repas 2</span><span class="kcal-day-repas">200Kcal</span>
-                    <button><i class="fas fa-pen"></i></button>
-                </div>
-                <div class="list-repas">
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 2</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>1 TIGE MOYENNE (19CM À 20 CM LONG) DE BROCOLI, BOUILLI, ÉGOUTTÉ</p>
+                        <p>200 G. DE FILET DE PLIE, FLÉTAN OU SOLE CUIT AU FOUR OU GRILLÉ</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!--// fin repas-->
-        <!--// repas-->
-        <div class="col-sm repas">
-            <div class="info-repas">
-                <div class="repas-top-bar">
-                    <span class="non-repas">Repas 2</span><span class="kcal-day-repas">200Kcal</span>
-                    <button><i class="fas fa-pen"></i></button>
-                </div>
-                <div class="list-repas">
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 3</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>15 G. D'AMANDES</p>
+                        <p>3 CRAQUELINS</p>
+                        <p>30 G. DE BEURRE D'ARACHIDES NATUREL</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!--// fin repas-->
-        <!--// repas-->
-        <div class="col-sm repas">
-            <div class="info-repas">
-                <div class="repas-top-bar">
-                    <span class="non-repas">Repas 2</span><span class="kcal-day-repas">200Kcal</span>
-                    <button><i class="fas fa-pen"></i></button>
-                </div>
-                <div class="list-repas">
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 4</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>15 G. D'AMANDES</p>
+                        <p>3 CRAQUELINS</p>
+                        <p>30 G. DE BEURRE D'ARACHIDES NATUREL</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!--// fin repas-->
-        <!--// repas-->
-        <div class="col-sm repas">
-            <div class="info-repas">
-                <div class="repas-top-bar">
-                    <span class="non-repas">Repas 2</span><span class="kcal-day-repas">200Kcal</span>
-                    <button><i class="fas fa-pen"></i></button>
-                </div>
-                <div class="list-repas">
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 5</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>500 ML DE POIS CHICHES (GARBANZO), BOUILLIS</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!--// fin repas-->
-        <!--// repas-->
-        <div class="col-sm repas">
-            <div class="info-repas">
-                <div class="repas-top-bar">
-                    <span class="non-repas">Repas 2</span><span class="kcal-day-repas">200Kcal</span>
-                    <button><i class="fas fa-pen"></i></button>
-                </div>
-                <div class="list-repas">
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
-                    <p>kjfaskjfdhsdf</p>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 6</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>250 ML DE SOUPE AUX LÉGUMES, MAISON</p>
+                    </div>
                 </div>
             </div>
+            <!--// fin repas-->
         </div>
-        <!--// fin repas-->
-    </div>
     </div>
     <!--fin plan-->
+    <!--plan-->
+    <div class="container">
+        <div class="row space-row-projet box-shadow-android day-plan">
+            <div class="col-sm-1 info-day-plan">
+                <p class="info-day-plan-week">Mar.</p>
+                <p  class="info-day-plan-day">27</p>
+                <p class="info-day-plan-month">Nov.</p>
+                <p class="info-day-plan-nbkcal">2000</p>
+                <p class="info-day-plan-kcal">Kcal</p>
+            </div>
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 1</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>4 GROS CEUFS ( À LA COQUE)</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 2</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>1 TIGE MOYENNE (19CM À 20 CM LONG) DE BROCOLI, BOUILLI, ÉGOUTTÉ</p>
+                        <p>200 G. DE FILET DE PLIE, FLÉTAN OU SOLE CUIT AU FOUR OU GRILLÉ</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 3</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>15 G. D'AMANDES</p>
+                        <p>3 CRAQUELINS</p>
+                        <p>30 G. DE BEURRE D'ARACHIDES NATUREL</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 4</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>15 G. D'AMANDES</p>
+                        <p>3 CRAQUELINS</p>
+                        <p>30 G. DE BEURRE D'ARACHIDES NATUREL</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 5</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>500 ML DE POIS CHICHES (GARBANZO), BOUILLIS</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 6</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>250 ML DE SOUPE AUX LÉGUMES, MAISON</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+        </div>
+    </div>
+    <!--fin plan-->
+    <!--plan-->
+    <div class="container">
+        <div class="row space-row-projet box-shadow-android day-plan">
+            <div class="col-sm-1 info-day-plan">
+                <p class="info-day-plan-week">Mer.</p>
+                <p  class="info-day-plan-day">28</p>
+                <p class="info-day-plan-month">Nov.</p>
+                <p class="info-day-plan-nbkcal">2000</p>
+                <p class="info-day-plan-kcal">Kcal</p>
+            </div>
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 1</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>4 GROS CEUFS ( À LA COQUE)</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 2</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>1 TIGE MOYENNE (19CM À 20 CM LONG) DE BROCOLI, BOUILLI, ÉGOUTTÉ</p>
+                        <p>200 G. DE FILET DE PLIE, FLÉTAN OU SOLE CUIT AU FOUR OU GRILLÉ</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 3</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>15 G. D'AMANDES</p>
+                        <p>3 CRAQUELINS</p>
+                        <p>30 G. DE BEURRE D'ARACHIDES NATUREL</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 4</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>15 G. D'AMANDES</p>
+                        <p>3 CRAQUELINS</p>
+                        <p>30 G. DE BEURRE D'ARACHIDES NATUREL</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 5</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>500 ML DE POIS CHICHES (GARBANZO), BOUILLIS</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 6</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>250 ML DE SOUPE AUX LÉGUMES, MAISON</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+        </div>
+    </div>
+    <!--fin plan-->
+    <!--plan-->
+    <div class="container">
+        <div class="row space-row-projet box-shadow-android day-plan">
+            <div class="col-sm-1 info-day-plan">
+                <p class="info-day-plan-week">Jeu.</p>
+                <p class="info-day-plan-day">29</p>
+                <p class="info-day-plan-month">Nov.</p>
+                <p class="info-day-plan-nbkcal">2000</p>
+                <p class="info-day-plan-kcal">Kcal</p>
+            </div>
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 1</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>4 GROS CEUFS ( À LA COQUE)</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 2</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>1 TIGE MOYENNE (19CM À 20 CM LONG) DE BROCOLI, BOUILLI, ÉGOUTTÉ</p>
+                        <p>200 G. DE FILET DE PLIE, FLÉTAN OU SOLE CUIT AU FOUR OU GRILLÉ</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 3</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>15 G. D'AMANDES</p>
+                        <p>3 CRAQUELINS</p>
+                        <p>30 G. DE BEURRE D'ARACHIDES NATUREL</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 4</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>15 G. D'AMANDES</p>
+                        <p>3 CRAQUELINS</p>
+                        <p>30 G. DE BEURRE D'ARACHIDES NATUREL</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 5</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>500 ML DE POIS CHICHES (GARBANZO), BOUILLIS</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 6</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>250 ML DE SOUPE AUX LÉGUMES, MAISON</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+        </div>
+    </div>
+    <!--fin plan-->
+    <!--plan-->
+    <div class="container">
+        <div class="row space-row-projet box-shadow-android day-plan">
+            <div class="col-sm-1 info-day-plan">
+                <p class="info-day-plan-week">Ven.</p>
+                <p  class="info-day-plan-day">30</p>
+                <p class="info-day-plan-month">Nov.</p>
+                <p class="info-day-plan-nbkcal">2000</p>
+                <p class="info-day-plan-kcal">Kcal</p>
+            </div>
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 1</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>4 GROS CEUFS ( À LA COQUE)</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 2</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>1 TIGE MOYENNE (19CM À 20 CM LONG) DE BROCOLI, BOUILLI, ÉGOUTTÉ</p>
+                        <p>200 G. DE FILET DE PLIE, FLÉTAN OU SOLE CUIT AU FOUR OU GRILLÉ</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 3</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>15 G. D'AMANDES</p>
+                        <p>3 CRAQUELINS</p>
+                        <p>30 G. DE BEURRE D'ARACHIDES NATUREL</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 4</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>15 G. D'AMANDES</p>
+                        <p>3 CRAQUELINS</p>
+                        <p>30 G. DE BEURRE D'ARACHIDES NATUREL</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 5</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>500 ML DE POIS CHICHES (GARBANZO), BOUILLIS</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 6</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>250 ML DE SOUPE AUX LÉGUMES, MAISON</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+        </div>
+    </div>
+    <!--fin plan-->
+    <!--plan-->
+    <div class="container">
+        <div class="row space-row-projet box-shadow-android day-plan">
+            <div class="col-sm-1 info-day-plan">
+                <p class="info-day-plan-week">Sam.</p>
+                <p  class="info-day-plan-day">1</p>
+                <p class="info-day-plan-month">Dez.</p>
+                <p class="info-day-plan-nbkcal">2000</p>
+                <p class="info-day-plan-kcal">Kcal</p>
+            </div>
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 1</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>4 GROS CEUFS ( À LA COQUE)</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 2</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>1 TIGE MOYENNE (19CM À 20 CM LONG) DE BROCOLI, BOUILLI, ÉGOUTTÉ</p>
+                        <p>200 G. DE FILET DE PLIE, FLÉTAN OU SOLE CUIT AU FOUR OU GRILLÉ</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 3</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>15 G. D'AMANDES</p>
+                        <p>3 CRAQUELINS</p>
+                        <p>30 G. DE BEURRE D'ARACHIDES NATUREL</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 4</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>15 G. D'AMANDES</p>
+                        <p>3 CRAQUELINS</p>
+                        <p>30 G. DE BEURRE D'ARACHIDES NATUREL</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 5</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>500 ML DE POIS CHICHES (GARBANZO), BOUILLIS</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 6</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>250 ML DE SOUPE AUX LÉGUMES, MAISON</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+        </div>
+    </div>
+    <!--fin plan-->
+    <!--plan-->
+    <div class="container">
+        <div class="row space-row-projet box-shadow-android day-plan">
+            <div class="col-sm-1 info-day-plan">
+                <p class="info-day-plan-week">Dim.</p>
+                <p  class="info-day-plan-day">2</p>
+                <p class="info-day-plan-month">Dez.</p>
+                <p class="info-day-plan-nbkcal">2000</p>
+                <p class="info-day-plan-kcal">Kcal</p>
+            </div>
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 1</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>4 GROS CEUFS ( À LA COQUE)</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 2</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>1 TIGE MOYENNE (19CM À 20 CM LONG) DE BROCOLI, BOUILLI, ÉGOUTTÉ</p>
+                        <p>200 G. DE FILET DE PLIE, FLÉTAN OU SOLE CUIT AU FOUR OU GRILLÉ</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 3</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>15 G. D'AMANDES</p>
+                        <p>3 CRAQUELINS</p>
+                        <p>30 G. DE BEURRE D'ARACHIDES NATUREL</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 4</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>15 G. D'AMANDES</p>
+                        <p>3 CRAQUELINS</p>
+                        <p>30 G. DE BEURRE D'ARACHIDES NATUREL</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 5</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>500 ML DE POIS CHICHES (GARBANZO), BOUILLIS</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+            <!--// repas-->
+            <div class="col-sm repas">
+                <div class="info-repas">
+                    <div class="repas-top-bar">
+                        <span class="non-repas">Repas 6</span>
+                        <button class="ajouterRepas" data-toggle="modal" data-target="#editRepas"><i
+                                class="fas fa-pen"></i></button>
+                    </div>
+                    <div class="list-repas">
+                        <p>250 ML DE SOUPE AUX LÉGUMES, MAISON</p>
+                    </div>
+                </div>
+            </div>
+            <!--// fin repas-->
+        </div>
+    </div>
+    <!--fin plan-->
+</div>
 </div>
 </div>
 
 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
     <li><p class="bubble-p">Ajouter un plan</p>
-        <button class="bubble-button"><i class="far fa-calendar-alt"></i></button>
+        <button class="bubble-button" data-toggle="modal" data-target="#ajouterPlan"><i class="far fa-calendar-alt"></i></button>
     </li>
     <li><p class="bubble-p">Envoyer par email</p>
-        <button class="bubble-button"><i class="far fa-envelope"></i></button>
+        <button class="bubble-button" data-toggle="modal" data-target="#editRepas"><i class="far fa-envelope"></i></button>
     </li>
     <li><p class="bubble-p">Sélectionner un autre plan</p>
-        <button class="bubble-button"><i class="fas fa-sync"></i></button>
+        <button class="bubble-button" data-toggle="modal" data-target="#envoyerPlanParEmail"><i class="fas fa-sync"></i></button>
     </li>
     <li><p class="bubble-p">Supprimer le plan</p>
-        <button id="bnteffacerPlan" class="bubble-button"><i class="far fa-trash-alt"></i></button>
+        <button id="bnteffacerPlan" class="bubble-button" data-toggle="modal" data-target="#effacerPlan"><i class="far fa-trash-alt"></i></button>
     </li>
 </ul>
 <button class="btn button-float-projet button-float" data-toggle="dropdown">
     <i class="fas fa-plus"></i>
 </button>
+
+
+<!-- Forms -->
+
+<!-- Modal -->
+<div class="modal fade" id="ajouterPlan" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editClientTitle">Editer Client</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" value="" id="inputEditIdClient">
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputEditCleintNon">Nom</label>
+                            <input type="text" class="form-control" id="inputEditCleintNon" placeholder="Nom">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputEditCourrier">Courrier électronique</label>
+                            <input type="email" class="form-control" id="inputEditCourrier"
+                                   placeholder="Courrier électronique">
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputEditCleintTelephone">Telephone</label>
+                            <input type="text" class="form-control" id="inputEditCleintTelephone"
+                                   placeholder="Telephone">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputEditAge">L'Age</label>
+                            <input type="number" class="form-control" id="inputEditAge" placeholder="Age">
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputEditGenre">Le Genre</label>
+                            <select id="inputEditGenre" class="form-control">
+                                <option selected>Slecioner...</option>
+                                <option value="M">Un homme</option>
+                                <option value="F">Une femme</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputEditHauteur">L'hauteur (cm)</label>
+                            <input type="number" class="form-control" id="inputEditHauteur" placeholder="L'hauteur">
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputEditPoids">Le poids (Kg)</label>
+                            <input type="number" class="form-control" id="inputEditPoids" placeholder="Le poids">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputEditBodyFatPercentage">Pourcentage de graisse</label>
+                            <input type="number" class="form-control" id="inputEditBodyFatPercentage"
+                                   placeholder="Pourcentage de graisse">
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputEditObjectif">Objectif</label>
+                            <select id="inputEditObjectif" class="form-control">
+                                <option selected>Slecioner...</option>
+                                <option value="1">Lose weight</option>
+                                <option value="2">Keep weight</option>
+                                <option value="3">Gain weight</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputEditNvActivite">Niveau d'activité</label>
+                            <select id="inputEditNvActivite" class="form-control">
+                                <option selected>Slecioner...</option>
+                                <option value="1">Very Light</option>
+                                <option value="2">Light</option>
+                                <option value="3">Moderate</option>
+                                <option value="4">Heavy</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputEditProteinRequirement">Besoins en protéines</label>
+                            <select id="inputEditProteinRequirement" class="form-control">
+                                <option selected>Slecioner...</option>
+                                <option value="1">Sedentary Adult (RDA)</option>
+                                <option value="2">Adult Recreational Exerciser</option>
+                                <option value="3">Adult Competitive Athlete</option>
+                                <option value="4">Adult Building Muscle Mass</option>
+                                <option value="5">Dieting Athlete</option>
+                                <option value="6">Growing Teenage Athlete</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputEditBMR">BMR</label>
+                            <input type="number" class="form-control" id="inputEditBMR" placeholder="BMR" disabled>
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputEditTDCE">TDCE</label>
+                            <input type="number" class="form-control" id="inputEditTDCE" placeholder="TDCE" disabled>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Annule</button>
+                <button id="btnSauvegarderClient" type="button" class="btn btn-success"><i class="far fa-save"></i>
+                    Sauvegarder
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="effacerPlan" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="effacerClientTitle">Supprimer un Client</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Vous voulez vraiment supprimer le client ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+                <button id="bnteffacerClient" type="button" class="btn btn-success"><i class="far fa-trash-alt"></i>
+                    Supprimer
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="envoyerPlanParEmail" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="effacerClientTitle">Supprimer un Client</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Vous voulez vraiment supprimer le client ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+                <button id="bnteffacerClient" type="button" class="btn btn-success"><i class="far fa-trash-alt"></i>
+                    Supprimer
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="selectionnerPlan" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ajouterCleintTitle">Ajouter Client</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" value="" id="inputAjouterIdClient">
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputAjouterCleintNon">Nom</label>
+                            <input type="text" class="form-control" id="inputAjouterCleintNon" placeholder="Nom">
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputAjouterCourrier">Courrier électronique</label>
+                            <input type="email" class="form-control" id="inputAjouterCourrier"
+                                   placeholder="Courrier électronique">
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputAjouterCleintTelephone">Telephone</label>
+                            <input type="text" class="form-control" id="inputAjouterCleintTelephone"
+                                   placeholder="Telephone">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputAjouterAge">L'Age</label>
+                            <input type="number" class="form-control" id="inputAjouterAge" placeholder="Age">
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputAjouterGenre">Le Genre</label>
+                            <select id="inputAjouterGenre" class="form-control">
+                                <option value="0" selected>Slecioner...</option>
+                                <option value="M">Un homme</option>
+                                <option value="F">Une femme</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputAjouterHauteur">L'hauteur (cm)</label>
+                            <input type="number" class="form-control" id="inputAjouterHauteur" placeholder="L'hauteur">
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputAjouterPoids">Le poids (Kg)</label>
+                            <input type="number" class="form-control" id="inputAjouterPoids" placeholder="Le poids">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputAjouterBodyFatPercentage">Pourcentage de graisse</label>
+                            <input type="number" class="form-control" id="inputAjouterBodyFatPercentage"
+                                   placeholder="Pourcentage de graisse">
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputAjouterObjectif">Objectif</label>
+                            <select id="inputAjouterObjectif" class="form-control">
+                                <option value="0" selected>Slecioner...</option>
+                                <option value="1">Lose weight</option>
+                                <option value="2">Keep weight</option>
+                                <option value="3">Gain weight</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputAjouterNvActivite">Niveau d'activité</label>
+                            <select id="inputAjouterNvActivite" class="form-control">
+                                <option value="0" selected>Slecioner...</option>
+                                <option value="1">Very Light</option>
+                                <option value="2">Light</option>
+                                <option value="3">Moderate</option>
+                                <option value="4">Heavy</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputAjouterProteinRequirement">Besoins en protéines</label>
+                            <select id="inputAjouterProteinRequirement" class="form-control">
+                                <option value="0" selected>Slecioner...</option>
+                                <option value="1">Sedentary Adult (RDA)</option>
+                                <option value="2">Adult Recreational Exerciser</option>
+                                <option value="3">Adult Competitive Athlete</option>
+                                <option value="4">Adult Building Muscle Mass</option>
+                                <option value="5">Dieting Athlete</option>
+                                <option value="6">Growing Teenage Athlete</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputAjouterBMR">BMR</label>
+                            <input type="number" class="form-control" id="inputAjouterBMR" placeholder="BMR" disabled>
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputAjouterTDCE">TDCE</label>
+                            <input type="number" class="form-control" id="inputAjouterTDCE" placeholder="TDCE" disabled>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+                <button id="btnAjouterClient" type="button" class="btn btn-success"><i class="fas fa-plus"></i> Ajouter
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="editRepas" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editRepasTitle">Editer repas</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <input id="searchRepasFild" class="form-control mr-sm-2" type="text"
+                                   placeholder="Search">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputAjouterBMR">Repas sélecioné</label>
+                            <input type="number" class="form-control" id="s" placeholder="Repas sélecioné">
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputAjouterTDCE">Portion</label>
+                            <input type="" class="form-control" id="inputPortionEditRepas" placeholder="Portion">
+                        </div>
+                    </div>
+                </form>
+                <div class="col-sm-12">
+                    <ul class="list-group">
+                        <li class="list-group-item">15 G. D'AMANDES <i
+                                class="far fa-trash-alt float-right text-danger"></i></li>
+                        <li class="list-group-item">3 CRAQUELINS <i
+                                class="far fa-trash-alt float-right text-danger"></i></li>
+                        <li class="list-group-item">30 G. DE BEURRE D'ARACHIDES NATUREL <i
+                                class="far fa-trash-alt float-right text-danger"></i></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+                <button id="bnteRegisterRepas" type="button" class="btn btn-success"><i class="far fa-trash-alt"></i>
+                    Sauvegarder
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Fin forms -->
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

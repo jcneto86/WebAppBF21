@@ -234,6 +234,7 @@ p span {
 .list-repas {
     color: #2181C8;
     margin-left: 3px;
+    padding: 3px;
     overflow-x: hidden;
     overflow-y: scroll;
     max-height: 90px;
