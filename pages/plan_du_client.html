@@ -807,10 +807,10 @@
         <button class="bubble-button" data-toggle="modal" data-target="#ajouterPlan"><i class="far fa-calendar-alt"></i></button>
     </li>
     <li><p class="bubble-p">Envoyer par email</p>
-        <button class="bubble-button" data-toggle="modal" data-target="#editRepas"><i class="far fa-envelope"></i></button>
+        <button class="bubble-button" data-toggle="modal" data-target="#envoyerPlanParEmail"><i class="far fa-envelope"></i></button>
     </li>
     <li><p class="bubble-p">Sélectionner un autre plan</p>
-        <button class="bubble-button" data-toggle="modal" data-target="#envoyerPlanParEmail"><i class="fas fa-sync"></i></button>
+        <button class="bubble-button" data-toggle="modal" data-target="#selectionnerPlan"><i class="fas fa-sync"></i></button>
     </li>
     <li><p class="bubble-p">Supprimer le plan</p>
         <button id="bnteffacerPlan" class="bubble-button" data-toggle="modal" data-target="#effacerPlan"><i class="far fa-trash-alt"></i></button>
@@ -846,6 +846,10 @@
                     <div class="form-row">
                         <div class="form-group col-md">
                             <p>Sélectionnez une période de 7 jours ou moins</p>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md">
                             <label for="inputEditCourrier">Début</label>
                             <input type="date" class="form-control" id="inputAjourterPlanDebut"
                                    placeholder="Début">
@@ -873,17 +877,17 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="effacerClientTitle">Supprimer un Client</h5>
+                <h5 class="modal-title" id="effacerPlanTitle">Supprimer le plan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Vous voulez vraiment supprimer le client ?
+                Vous voulez vraiment supprimer ce plan ?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
-                <button id="bnteffacerClient" type="button" class="btn btn-success"><i class="far fa-trash-alt"></i>
+                <button id="bnteffacerPlan" type="button" class="btn btn-success"><i class="far fa-trash-alt"></i>
                     Supprimer
                 </button>
             </div>
@@ -896,7 +900,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="effacerClientTitle">Supprimer un Client</h5>
+                <h5 class="modal-title" id="envoyerPlanParTitle">Envoyer plan par email</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -904,10 +908,19 @@
             <div class="modal-body">
                 Vous voulez vraiment supprimer le client ?
             </div>
+            <form>
+                <div class="form-group col-md">
+                    <label for="envoyerPlanParMasquerCal">Masquer les calories ?</label>
+                    <select class="form-control" id="envoyerPlanParMasquerCal">
+                      <option>Oui</option>
+                      <option>Non</option>
+                    </select>
+                  </div>
+              </form>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
                 <button id="bnteffacerClient" type="button" class="btn btn-success"><i class="far fa-trash-alt"></i>
-                    Supprimer
+                    Envoyer
                 </button>
             </div>
         </div>
@@ -919,108 +932,33 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="ajouterCleintTitle">Ajouter Client</h5>
+                <h5 class="modal-title" id="selectionnerPlanTitle">Ajouter Client</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
+                
                 <form>
-                    <input type="hidden" value="" id="inputAjouterIdClient">
-                    <div class="form-row">
                         <div class="form-group col-md">
-                            <label for="inputAjouterCleintNon">Nom</label>
-                            <input type="text" class="form-control" id="inputAjouterCleintNon" placeholder="Nom">
-                        </div>
-
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md">
-                            <label for="inputAjouterCourrier">Courrier électronique</label>
-                            <input type="email" class="form-control" id="inputAjouterCourrier"
-                                   placeholder="Courrier électronique">
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputAjouterCleintTelephone">Telephone</label>
-                            <input type="text" class="form-control" id="inputAjouterCleintTelephone"
-                                   placeholder="Telephone">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md">
-                            <label for="inputAjouterAge">L'Age</label>
-                            <input type="number" class="form-control" id="inputAjouterAge" placeholder="Age">
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputAjouterGenre">Le Genre</label>
-                            <select id="inputAjouterGenre" class="form-control">
-                                <option value="0" selected>Slecioner...</option>
-                                <option value="M">Un homme</option>
-                                <option value="F">Une femme</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputAjouterHauteur">L'hauteur (cm)</label>
-                            <input type="number" class="form-control" id="inputAjouterHauteur" placeholder="L'hauteur">
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputAjouterPoids">Le poids (Kg)</label>
-                            <input type="number" class="form-control" id="inputAjouterPoids" placeholder="Le poids">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md">
-                            <label for="inputAjouterBodyFatPercentage">Pourcentage de graisse</label>
-                            <input type="number" class="form-control" id="inputAjouterBodyFatPercentage"
-                                   placeholder="Pourcentage de graisse">
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputAjouterObjectif">Objectif</label>
-                            <select id="inputAjouterObjectif" class="form-control">
-                                <option value="0" selected>Slecioner...</option>
-                                <option value="1">Lose weight</option>
-                                <option value="2">Keep weight</option>
-                                <option value="3">Gain weight</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputAjouterNvActivite">Niveau d'activité</label>
-                            <select id="inputAjouterNvActivite" class="form-control">
-                                <option value="0" selected>Slecioner...</option>
-                                <option value="1">Very Light</option>
-                                <option value="2">Light</option>
-                                <option value="3">Moderate</option>
-                                <option value="4">Heavy</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputAjouterProteinRequirement">Besoins en protéines</label>
-                            <select id="inputAjouterProteinRequirement" class="form-control">
-                                <option value="0" selected>Slecioner...</option>
-                                <option value="1">Sedentary Adult (RDA)</option>
-                                <option value="2">Adult Recreational Exerciser</option>
-                                <option value="3">Adult Competitive Athlete</option>
-                                <option value="4">Adult Building Muscle Mass</option>
-                                <option value="5">Dieting Athlete</option>
-                                <option value="6">Growing Teenage Athlete</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md">
-                            <label for="inputAjouterBMR">BMR</label>
-                            <input type="number" class="form-control" id="inputAjouterBMR" placeholder="BMR" disabled>
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputAjouterTDCE">TDCE</label>
-                            <input type="number" class="form-control" id="inputAjouterTDCE" placeholder="TDCE" disabled>
-                        </div>
-                    </div>
-                </form>
+                                <p>Sélectionnez un plan dans la liste</p>  
+                              </div>
+                    <div class="form-group col-md">
+                        <label for="envoyerPlanParMasquerCal">Masquer les calories ?</label>
+                        <select class="form-control" id="envoyerPlanParMasquerCal">
+                          <option>NOM PLAN 01</option>
+                          <option>NOM PLAN 02</option>
+                          <option>NOM PLAN 03</option>
+                          <option>NOM PLAN 04</option>
+                          <option>NOM PLAN 05</option>
+                          <option>NOM PLAN 06</option>
+                        </select>
+                      </div>
+                  </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
-                <button id="btnAjouterClient" type="button" class="btn btn-success"><i class="fas fa-plus"></i> Ajouter
+                <button id="btnAjouterClient" type="button" class="btn btn-success"> Sélectionner
                 </button>
             </div>
         </div>
