@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste entraîneur | BF21</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/bootstrap-dev.css">
+    <link rel="stylesheet" href="../css/main.css" type="text/css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg  fixed-top navbar-dark bg-dark">
+    <div class="container ">
+        <a class="navbar-brand" href="#">
+            <button class="navbar-toggler navbar-" type="button" data-toggle="collapse"
+                    data-target="#navbar2SupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <img class="figure-img " src="../img/logo.png">
+        </a>
+        <div class="collapse navbar-collapse justify-content-end" id="navbar2SupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="../pages/list_client.html">
+                        <i class="fas fa-user"></i><span>Liste clients</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../pages/list_aliment.html">
+                        <i class="fas fa-utensils"></i><span>Liste aliments</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../pages/list_entreineur.html">
+                        <i class="far fa-user"></i><span>Liste entraîneurs</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../pages/fac.html">
+                        <i class="far fa-question-circle"></i><span>FAQ</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <i id="btnDeconnection" class="fas fa-sign-out-alt"></i><span>Deconnection</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-item embed-responsive">
+            <form class="form-inline my-2 my-lg-0 align-content-center search-container">
+                <input id="searchFild" class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button id="btnSearchFild" type="button" class="btn btn-primary">
+                    <i class="fas fa-search"> Search</i>
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container-projet">
+    <div id="listEntreineur" class="container margin-top-projet">
+
+    </div>
+</div>
+
+<button class="btn button-float-projet button-float" data-toggle="modal" data-target="#ajouterEntreineur">
+    <i class="fas fa-plus"></i>
+</button>
+
+<!-- Forms -->
+
+<!-- Modal -->
+<div class="modal fade" id="editEntreineur" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editEntreineurTitle">Editer Entreineur</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" value="" id="inputEditIdEntreineur">
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputEditEntreineurNon">Nom</label>
+                            <input type="text" class="form-control" id="inputEditEntreineurNon" placeholder="Nom">
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputEditEntreineurLogin">Nom d'utilisateur</label>
+                            <input type="text" class="form-control" id="inputEditEntreineurLogin"
+                                   placeholder="Nom d'utilisateur">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputEditEntreineurCourrier">Courrier électronique</label>
+                            <input type="email" class="form-control" id="inputEditEntreineurCourrier"
+                                   placeholder="Courrier électronique">
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputEditEntreineurTelephone">Telephone</label>
+                            <input type="text" class="form-control" id="inputEditEntreineurTelephone"
+                                   placeholder="Telephone">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputEditEntreineurPassword">Mot de passe</label>
+                            <input type="password" class="form-control" id="inputEditEntreineurPassword"
+                                   placeholder="Mot de passe">
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputEditEntreineurConfirmerPassword">Confirmer mot de passe</label>
+                            <input type="password" class="form-control" id="inputEditEntreineurConfirmerPassword"
+                                   placeholder="Confirmer mot de passe">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Annule</button>
+                <button id="btnSauvegarderEntreineur" type="button" class="btn btn-success"><i class="far fa-save"></i>
+                    Sauvegarder
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="effacerEntreineur" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="effacerEntreineurTitle">Supprimer un Entreineur</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Vous voulez vraiment supprimer l'Entreineur ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+                <button id="bnteffacerEntreineur" type="button" class="btn btn-success"><i class="far fa-trash-alt"></i>
+                    Supprimer
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="ajouterEntreineur" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ajouterEntreineurTitle">Ajouter Entreineur</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputAjouterEntreineurNon">Nom</label>
+                            <input type="text" class="form-control" id="inputAjouterEntreineurNon" placeholder="Nom">
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputAjouterEntreineurLogin">Nom d'utilisateur</label>
+                            <input type="text" class="form-control" id="inputAjouterEntreineurLogin"
+                                   placeholder="Nom d'utilisateur">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputAjouterEntreineurCourrier">Courrier électronique</label>
+                            <input type="email" class="form-control" id="inputAjouterEntreineurCourrier"
+                                   placeholder="Courrier électronique">
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputAjouterEntreineurTelephone">Telephone</label>
+                            <input type="text" class="form-control" id="inputAjouterEntreineurTelephone"
+                                   placeholder="Telephone">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputAjouterEntreineurPassword">Mot de passe</label>
+                            <input type="password" class="form-control" id="inputAjouterEntreineurPassword"
+                                   placeholder="Mot de passe">
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputAjouterEntreineurConfirmerPassword">Confirmer mot de passe</label>
+                            <input type="password" class="form-control" id="inputAjouterEntreineurConfirmerPassword"
+                                   placeholder="Confirmer mot de passe">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+                <button id="btnAjouterEntreineur" type="button" class="btn btn-success"><i class="fas fa-plus"></i>
+                    Ajouter
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Fin forms -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="https://github.com/makeusabrew/bootbox/releases/download/v4.4.0/bootbox.min.js"></script>
+<script src="../js/entreineur.js"></script>
+</body>

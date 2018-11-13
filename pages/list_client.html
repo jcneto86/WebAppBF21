@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List client | BF21</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/bootstrap-dev.css">
+    <link rel="stylesheet" href="../css/main.css" type="text/css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg  fixed-top navbar-dark bg-dark">
+    <div class="container ">
+        <a class="navbar-brand" href="#">
+            <button class="navbar-toggler navbar-" type="button" data-toggle="collapse"
+                    data-target="#navbar2SupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <img class="figure-img " src="../img/logo.png">
+        </a>
+        <div class="collapse navbar-collapse justify-content-end" id="navbar2SupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="../pages/list_client.html">
+                        <i class="fas fa-user"></i><span>Liste clients</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../pages/list_aliment.html">
+                        <i class="fas fa-utensils"></i><span>Liste aliments</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../pages/list_entreineur.html">
+                        <i class="far fa-user"></i><span>Liste entraîneurs</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../pages/fac.html">
+                        <i class="far fa-question-circle"></i><span>FAQ</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <i id="btnDeconnection" class="fas fa-sign-out-alt"></i><span>Deconnection</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-item">
+            <form class="form-inline my-2 my-lg-0 align-content-center search-container">
+                <input id="searchFild" class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button id="btnSearchFild" type="button" class="btn btn-primary">
+                    <i class="fas fa-search"> Search</i>
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="container-projet">
+    <div id="listClient" class="container margin-top-projet">
+
+    </div>
+</div>
+
+<button class="btn button-float-projet button-float" data-toggle="modal" data-target="#ajouterClient">
+    <i class="fas fa-plus"></i>
+</button>
+
+<!-- Forms -->
+
+<!-- Modal -->
+<div class="modal fade" id="editClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editClientTitle">Editer Client</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" value="" id="inputEditIdClient">
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputEditCleintNon">Nom</label>
+                            <input type="text" class="form-control" id="inputEditCleintNon" placeholder="Nom">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputEditCourrier">Courrier électronique</label>
+                            <input type="email" class="form-control" id="inputEditCourrier"
+                                   placeholder="Courrier électronique">
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputEditCleintTelephone">Telephone</label>
+                            <input type="text" class="form-control" id="inputEditCleintTelephone"
+                                   placeholder="Telephone">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputEditAge">L'Age</label>
+                            <input type="number" class="form-control" id="inputEditAge" placeholder="Age">
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputEditGenre">Le Genre</label>
+                            <select id="inputEditGenre" class="form-control">
+                                <option selected>Slecioner...</option>
+                                <option value="M">Un homme</option>
+                                <option value="F">Une femme</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputEditHauteur">L'hauteur (cm)</label>
+                            <input type="number" class="form-control" id="inputEditHauteur" placeholder="L'hauteur">
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputEditPoids">Le poids (Kg)</label>
+                            <input type="number" class="form-control" id="inputEditPoids" placeholder="Le poids">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputEditBodyFatPercentage">Pourcentage de graisse</label>
+                            <input type="number" class="form-control" id="inputEditBodyFatPercentage"
+                                   placeholder="Pourcentage de graisse">
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputEditObjectif">Objectif</label>
+                            <select id="inputEditObjectif" class="form-control">
+                                <option selected>Slecioner...</option>
+                                <option value="1">Lose weight</option>
+                                <option value="2">Keep weight</option>
+                                <option value="3">Gain weight</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputEditNvActivite">Niveau d'activité</label>
+                            <select id="inputEditNvActivite" class="form-control">
+                                <option selected>Slecioner...</option>
+                                <option value="1">Very Light</option>
+                                <option value="2">Light</option>
+                                <option value="3">Moderate</option>
+                                <option value="4">Heavy</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputEditProteinRequirement">Besoins en protéines</label>
+                            <select id="inputEditProteinRequirement" class="form-control">
+                                <option selected>Slecioner...</option>
+                                <option value="1">Sedentary Adult (RDA)</option>
+                                <option value="2">Adult Recreational Exerciser</option>
+                                <option value="3">Adult Competitive Athlete</option>
+                                <option value="4">Adult Building Muscle Mass</option>
+                                <option value="5">Dieting Athlete</option>
+                                <option value="6">Growing Teenage Athlete</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputEditBMR">BMR</label>
+                            <input type="number" class="form-control" id="inputEditBMR" placeholder="BMR" disabled>
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputEditTDCE">TDCE</label>
+                            <input type="number" class="form-control" id="inputEditTDCE" placeholder="TDCE" disabled>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Annule</button>
+                <button id="btnSauvegarderClient" type="button" class="btn btn-success"><i class="far fa-save"></i>
+                    Sauvegarder
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="effacerClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="effacerClientTitle">Supprimer un Client</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Vous voulez vraiment supprimer le client ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+                <button id="bnteffacerClient" type="button" class="btn btn-success"><i class="far fa-trash-alt"></i>
+                    Supprimer
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="ajouterClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ajouterCleintTitle">Ajouter Client</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" value="" id="inputAjouterIdClient">
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputAjouterCleintNon">Nom</label>
+                            <input type="text" class="form-control" id="inputAjouterCleintNon" placeholder="Nom">
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputAjouterCourrier">Courrier électronique</label>
+                            <input type="email" class="form-control" id="inputAjouterCourrier"
+                                   placeholder="Courrier électronique">
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputAjouterCleintTelephone">Telephone</label>
+                            <input type="text" class="form-control" id="inputAjouterCleintTelephone"
+                                   placeholder="Telephone">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputAjouterAge">L'Age</label>
+                            <input type="number" class="form-control" id="inputAjouterAge" placeholder="Age">
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputAjouterGenre">Le Genre</label>
+                            <select id="inputAjouterGenre" class="form-control">
+                                <option value="0" selected>Slecioner...</option>
+                                <option value="M">Un homme</option>
+                                <option value="F">Une femme</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputAjouterHauteur">L'hauteur (cm)</label>
+                            <input type="number" class="form-control" id="inputAjouterHauteur" placeholder="L'hauteur">
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputAjouterPoids">Le poids (Kg)</label>
+                            <input type="number" class="form-control" id="inputAjouterPoids" placeholder="Le poids">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputAjouterBodyFatPercentage">Pourcentage de graisse</label>
+                            <input type="number" class="form-control" id="inputAjouterBodyFatPercentage"
+                                   placeholder="Pourcentage de graisse">
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputAjouterObjectif">Objectif</label>
+                            <select id="inputAjouterObjectif" class="form-control">
+                                <option value="0" selected>Slecioner...</option>
+                                <option value="1">Lose weight</option>
+                                <option value="2">Keep weight</option>
+                                <option value="3">Gain weight</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputAjouterNvActivite">Niveau d'activité</label>
+                            <select id="inputAjouterNvActivite" class="form-control">
+                                <option value="0" selected>Slecioner...</option>
+                                <option value="1">Very Light</option>
+                                <option value="2">Light</option>
+                                <option value="3">Moderate</option>
+                                <option value="4">Heavy</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputAjouterProteinRequirement">Besoins en protéines</label>
+                            <select id="inputAjouterProteinRequirement" class="form-control">
+                                <option value="0" selected>Slecioner...</option>
+                                <option value="1">Sedentary Adult (RDA)</option>
+                                <option value="2">Adult Recreational Exerciser</option>
+                                <option value="3">Adult Competitive Athlete</option>
+                                <option value="4">Adult Building Muscle Mass</option>
+                                <option value="5">Dieting Athlete</option>
+                                <option value="6">Growing Teenage Athlete</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md">
+                            <label for="inputAjouterBMR">BMR</label>
+                            <input type="number" class="form-control" id="inputAjouterBMR" placeholder="BMR" disabled>
+                        </div>
+                        <div class="form-group col-md">
+                            <label for="inputAjouterTDCE">TDCE</label>
+                            <input type="number" class="form-control" id="inputAjouterTDCE" placeholder="TDCE" disabled>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+                <button id="btnAjouterClient" type="button" class="btn btn-success"><i class="fas fa-plus"></i> Ajouter
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Fin forms -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="https://github.com/makeusabrew/bootbox/releases/download/v4.4.0/bootbox.min.js"></script>
+
+<script src="../js/client.js"></script>
+
+</body>
+</html>
