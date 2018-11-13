@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ddea42f2-cccc-4273-8e6d-38550ef75216" name="Default" comment="v0.7.4&#10;&#10;Plan - criation infoCleint">
+    <list default="true" id="ddea42f2-cccc-4273-8e6d-38550ef75216" name="Default" comment="v0.7.5">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/plan.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/plan.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/plan_du_client.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/plan_du_client.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,11 +17,12 @@
     <session id="527476917">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
+          <entry key="project.closed" value="9" />
+          <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.4" value="3" />
           <entry key="project.open.time.5" value="4" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -32,7 +30,7 @@
           <entry key="css" value="66" />
           <entry key="html" value="860" />
           <entry key="js" value="4105" />
-          <entry key="txt" value="189" />
+          <entry key="txt" value="190" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -40,7 +38,7 @@
           <entry key="CSS" value="66" />
           <entry key="HTML" value="860" />
           <entry key="JavaScript" value="4105" />
-          <entry key="PLAIN_TEXT" value="189" />
+          <entry key="PLAIN_TEXT" value="190" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -73,7 +71,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/plan.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
+            <state relative-caret-position="10110">
               <caret line="783" column="4" selection-start-line="783" selection-start-column="4" selection-end-line="783" selection-end-column="4" />
               <folding>
                 <element signature="n#!!block;n#listerPlan#0" />
@@ -99,7 +97,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/list_aliment.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
+            <state relative-caret-position="1005">
               <caret line="67" column="53" selection-start-line="67" selection-start-column="53" selection-end-line="67" selection-end-column="102" />
             </state>
           </provider>
@@ -108,7 +106,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
+            <state relative-caret-position="1620">
               <caret line="108" column="19" selection-start-line="108" selection-start-column="19" selection-end-line="108" selection-end-column="19" />
             </state>
           </provider>
@@ -297,6 +295,7 @@
       <workItem from="1541522725352" duration="1605000" />
       <workItem from="1541775378137" duration="179000" />
       <workItem from="1541818824268" duration="3892000" />
+      <workItem from="1542056309164" duration="29000" />
     </task>
     <task id="LOCAL-00001" summary="v0.1">
       <created>1537967857419</created>
@@ -438,11 +437,18 @@
       <option name="project" value="LOCAL" />
       <updated>1541441326281</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="v0.7.5">
+      <created>1542056329527</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1542056329527</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="202298000" />
+    <option name="totallyTimeSpent" value="202327000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="838" extended-state="0" />
@@ -489,7 +495,8 @@
     <MESSAGE value="v0.7.2&#10;&#10;&#10;Aliment - en cours (erreur lors de l'inscription)" />
     <MESSAGE value="v0.7.3&#10;&#10;Plan - méthodes API configure&#10;------------------------------------------------- &#10;Aliment - en cours (erreur lors de l'inscription)" />
     <MESSAGE value="v0.7.4&#10;&#10;Plan - criation infoCleint" />
-    <option name="LAST_COMMIT_MESSAGE" value="v0.7.4&#10;&#10;Plan - criation infoCleint" />
+    <MESSAGE value="v0.7.5" />
+    <option name="LAST_COMMIT_MESSAGE" value="v0.7.5" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -601,13 +608,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4335">
-          <caret line="289" column="53" selection-start-line="289" selection-start-column="53" selection-end-line="289" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/fac.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
@@ -615,9 +615,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pages/list_client.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3870">
+          <caret line="50" column="16" lean-forward="true" selection-start-line="50" selection-start-column="16" selection-end-line="53" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4335">
+          <caret line="289" column="53" selection-start-line="289" selection-start-column="53" selection-end-line="289" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/plan.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
+        <state relative-caret-position="10110">
           <caret line="783" column="4" selection-start-line="783" selection-start-column="4" selection-end-line="783" selection-end-column="4" />
           <folding>
             <element signature="n#!!block;n#listerPlan#0" />
@@ -630,24 +644,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="108" column="19" selection-start-line="108" selection-start-column="19" selection-end-line="108" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/list_client.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3870">
-          <caret line="50" column="16" lean-forward="true" selection-start-line="50" selection-start-column="16" selection-end-line="53" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/list_aliment.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
+        <state relative-caret-position="1005">
           <caret line="67" column="53" selection-start-line="67" selection-start-column="53" selection-end-line="67" selection-end-column="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1620">
+          <caret line="108" column="19" selection-start-line="108" selection-start-column="19" selection-end-line="108" selection-end-column="19" />
         </state>
       </provider>
     </entry>

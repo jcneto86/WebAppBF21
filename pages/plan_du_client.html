@@ -824,12 +824,12 @@
 <!-- Forms -->
 
 <!-- Modal -->
-<div class="modal fade" id="ajouterPlan" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="ajouterPlan" tabindex="-1" role="dialog" aria-labelledby="ajouterPlanModal"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editClientTitle">Editer Client</h5>
+                <h5 class="modal-title" id="ajouterPlanTitle">Ajouter Plan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -839,90 +839,21 @@
                     <input type="hidden" value="" id="inputEditIdClient">
                     <div class="form-row">
                         <div class="form-group col-md">
-                            <label for="inputEditCleintNon">Nom</label>
-                            <input type="text" class="form-control" id="inputEditCleintNon" placeholder="Nom">
+                            <label for="inputAjourterPlanNon">Nom</label>
+                            <input type="text" class="form-control" id="inputAjourterPlanNon" placeholder="Nom">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md">
-                            <label for="inputEditCourrier">Courrier électronique</label>
-                            <input type="email" class="form-control" id="inputEditCourrier"
-                                   placeholder="Courrier électronique">
+                            <p>Sélectionnez une période de 7 jours ou moins</p>
+                            <label for="inputEditCourrier">Début</label>
+                            <input type="date" class="form-control" id="inputAjourterPlanDebut"
+                                   placeholder="Début">
                         </div>
                         <div class="form-group col-md">
-                            <label for="inputEditCleintTelephone">Telephone</label>
-                            <input type="text" class="form-control" id="inputEditCleintTelephone"
-                                   placeholder="Telephone">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md">
-                            <label for="inputEditAge">L'Age</label>
-                            <input type="number" class="form-control" id="inputEditAge" placeholder="Age">
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputEditGenre">Le Genre</label>
-                            <select id="inputEditGenre" class="form-control">
-                                <option selected>Slecioner...</option>
-                                <option value="M">Un homme</option>
-                                <option value="F">Une femme</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputEditHauteur">L'hauteur (cm)</label>
-                            <input type="number" class="form-control" id="inputEditHauteur" placeholder="L'hauteur">
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputEditPoids">Le poids (Kg)</label>
-                            <input type="number" class="form-control" id="inputEditPoids" placeholder="Le poids">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md">
-                            <label for="inputEditBodyFatPercentage">Pourcentage de graisse</label>
-                            <input type="number" class="form-control" id="inputEditBodyFatPercentage"
-                                   placeholder="Pourcentage de graisse">
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputEditObjectif">Objectif</label>
-                            <select id="inputEditObjectif" class="form-control">
-                                <option selected>Slecioner...</option>
-                                <option value="1">Lose weight</option>
-                                <option value="2">Keep weight</option>
-                                <option value="3">Gain weight</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputEditNvActivite">Niveau d'activité</label>
-                            <select id="inputEditNvActivite" class="form-control">
-                                <option selected>Slecioner...</option>
-                                <option value="1">Very Light</option>
-                                <option value="2">Light</option>
-                                <option value="3">Moderate</option>
-                                <option value="4">Heavy</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputEditProteinRequirement">Besoins en protéines</label>
-                            <select id="inputEditProteinRequirement" class="form-control">
-                                <option selected>Slecioner...</option>
-                                <option value="1">Sedentary Adult (RDA)</option>
-                                <option value="2">Adult Recreational Exerciser</option>
-                                <option value="3">Adult Competitive Athlete</option>
-                                <option value="4">Adult Building Muscle Mass</option>
-                                <option value="5">Dieting Athlete</option>
-                                <option value="6">Growing Teenage Athlete</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md">
-                            <label for="inputEditBMR">BMR</label>
-                            <input type="number" class="form-control" id="inputEditBMR" placeholder="BMR" disabled>
-                        </div>
-                        <div class="form-group col-md">
-                            <label for="inputEditTDCE">TDCE</label>
-                            <input type="number" class="form-control" id="inputEditTDCE" placeholder="TDCE" disabled>
+                            <label for="inputEditCleintTelephone">Fin</label>
+                            <input type="date" class="form-control" id="inputAjourterPlanFin"
+                                   placeholder="Fin">
                         </div>
                     </div>
                 </form>
